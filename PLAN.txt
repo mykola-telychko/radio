@@ -1,2 +1,21 @@
 
 https://morsecode.world/international/translator.html
+
+detail morse 
+https://capitalizemytitle.com/morse-code-translator/
+
+work with cyrillic
+https://morsecodetranslator.com/
+
+convert to file 
+https://www.qbit.it/lab/morse/?text=some+text+&dit=1
+
+https://www.morsecode-translator.com/ru
+
+https://translatermorsecode.com/baudot-code/
+
+// light morse 
+https://codepen.io/merrybottle/pen/wxPyxz
+
+top color 
+https://codepen.io/skelet00r/pen/bGNQzzV
