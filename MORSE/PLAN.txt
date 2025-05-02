@@ -1,3 +1,9 @@
+- розрахунок часу та довжини стрічки
+- знайти старі бігунки фейдери 
+
+DESIGN 
+https://codepen.io/telychko-mykola/pen/gbbeawb
+https://codepen.io/telychko-mykola/pen/pvvLgzK
 
 https://morsecode.world/international/translator.html
 
@@ -19,3 +25,9 @@ https://codepen.io/merrybottle/pen/wxPyxz
 
 top color 
 https://codepen.io/skelet00r/pen/bGNQzzV
+
+theory 
+https://www.emissary.ai/telegraph-morse-code-text
+
+premium
+https://kidskonnect.com/science/morse-code/

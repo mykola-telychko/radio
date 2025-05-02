@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MORSE</title>
+</head>
+<style>
+:root {
+  --primary: #2B061E;
+  --secondary: #919098;
+  --selected: #7affa6;
+  --solved: #FF857A;
+  --unsolved: #414A4C;
+}
+
+html body {
+  background: var(--primary); 
+}
+
+h1 {
+  color: var(--secondary);
+}
+
+.container {
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-size: 2em;
+}
+
+#word span{
+  font-size: 3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 1s ease all;
+}
+
+#word > :first-child {
+  margin-left: 0em !important;
+}
+
+#word > :last-child {
+  margin-right: 0em !important;
+}
+
+.to-solve{
+ color: var(--unsolved);
+}
+
+.solved {
+  color: var(--solved);
+}
+
+.solving {
+  color: var(--selected);
+  font-size: 1.5em;
+  margin: 0 .1em;
+}
+
+/* BTN  */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,300');
+body{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #2B061E;
+}
+.content{	display: flex;}
+/* ////////////////////////////////////////////////
+// The above is just for the layout. */
+.btn-vintage{
+	display: block;
+	text-align:center;
+	margin: 10% 10px;
+	height: 170px;
+	width: 170px;
+	line-height: 170px; /* match button height to center vertically */
+	background: #221e25;
+	color: #FDFBDA;
+	border: 3px solid #eaca6e;
+	border-radius: 50%;
+	font-size: 70px;
+	cursor: pointer;
+	user-select: none;
+	box-shadow: 
+		inset -3px -3px 3px -2px #ffedad, 
+		1px 1px 1px 2px #73604c, 
+		inset 1px 1px 4px 2px #73604c, 
+		-1px -1px 0px 0px #ffedad, 
+		1px 2px 6px 4px rgba(20, 20, 20, 0.7), 
+		inset 2px 2px 6px 6px #000000;
+	transition: all 0.07s linear;
+	color: #ff3333;
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-vintage span{
+	background-color: #630000;
+	color: transparent;
+	text-shadow: 1px 1px 1px #ff6666;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	transition: all 0.1s ease;
+	position: relative;
+	z-index: 2;
+}
+
+.btn-vintage::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.btn-vintage:hover::before {
+	opacity: 1;
+}
+
+.btn-vintage:hover {
+	transform: translateY(-3px);
+	box-shadow: 
+		inset -3px -3px 3px -2px #ffedad, 
+		1px 1px 1px 2px #73604c, 
+		inset 1px 1px 4px 2px #73604c, 
+		-1px -1px 0px 0px #ffedad, 
+		1px 4px 10px 6px rgba(20, 20, 20, 0.8), 
+		inset 2px 2px 6px 6px #000000;
+}
+
+.btn-vintage:active, .btn-vintage.active {
+	transform: translateY(2px);
+	box-shadow: 
+		inset -3px -3px 3px -2px #ffedad, 
+		1px 1px 1px 2px #73604c, 
+		inset 1px 1px 4px 2px #73604c, 
+		-1px -1px 0px 0px #ffedad, 
+		0px 0px 2px 4px rgba(20, 20, 20, 0.7), 
+		inset 4px 4px 6px 6px #000000;
+}
+
+.btn-vintage:active span, .btn-vintage.active span {
+	background-color: #ffffff;
+	color: transparent;
+	text-shadow: -1px -1px 15px #ff3333;
+	transform: scale(0.95);
+}
+
+.btn-vintage:active::after, .btn-vintage.active::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 140px;
+	height: 140px;
+	background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+	0% {
+		width: 0;
+		height: 0;
+		opacity: 0.5;
+	}
+	100% {
+		width: 200px;
+		height: 200px;
+		opacity: 0;
+	}
+}
+
+/* TABLE  */
+@import url(https://fonts.googleapis.com/css?family=Glegoo);
+
+html {
+  font-family:glegoo;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing:3px;
+}
+
+table {
+  margin:50px auto;
+  border-collapse:collapse;
+  width:70%;
+  height:auto;
+  outline:5px solid #000;
+    min-width:600px;
+}
+
+
+td{
+  display:inline;
+  text-align: center;
+  margin:0px;
+  float:left;
+  outline:4px solid #333;
+  margin:-1px;
+  background:#e5e1d6;
+}
+
+.one{
+  width:25%; 
+  height:10vw;
+  font-size: 5vw;
+
+}
+
+.two {
+  width: 75%;
+  height: 5vw;
+  font-size: 2.5vw;
+}
+
+.three {
+  width:50%;
+  height: 5vw; 
+  font-size: 2.5vw;
+}
+
+.four {
+  width: 25%;
+  height: 5vw;
+  font-size: 2.5vw;
+}
+
+.five {
+  width:100%;
+  height:8vw;
+  font-size: 4.5vw;
+  min-width:600px;
+}
+</style>
+<body>
+    <div class="container-gadget">
+        <h1>Morse Code</h1>
+        <p id="word"></p>
+        <input id="input" type="text" autocomplete="off" placeholder="text" />
+        <input id="code" type="text" autocomplete="off" placeholder="code" />
+        <input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
+    
+	    <div class="content">
+			<div class="btn-vintage" id="morseButton">
+				<span>click</span>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<table>
+	<td class=one> __. </td>
+	<td class=two>MORSE</td>
+	<td class=three>PS – AI – INDD</td>
+	<td class=four>2025</td>
+	<tr><td class=five>..- ..-- sos</td></tr>
+	<tr><td class=five>..- ..-- sos</td></tr>
+</table>
+  
+
+	
+
+    <script>
+        const morseButton = document.getElementById('morseButton');
+        
+        // Додаємо обробник події для натискання
+        morseButton.addEventListener('mousedown', function() {
+            this.classList.add('active');
+        });
+        
+        // Додаємо обробник події для відпускання
+        morseButton.addEventListener('mouseup', function() {
+            this.classList.remove('active');
+        });
+        
+        // Додаємо обробник для випадку, коли курсор виходить за межі кнопки під час натискання
+        morseButton.addEventListener('mouseleave', function() {
+            if(this.classList.contains('active')) {
+                this.classList.remove('active');
+            }
+        });
+        
+        // Для touch-пристроїв
+        morseButton.addEventListener('touchstart', function() {
+            this.classList.add('active');
+        });
+        
+        morseButton.addEventListener('touchend', function() {
+            this.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
