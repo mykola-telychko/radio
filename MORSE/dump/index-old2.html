@@ -12,9 +12,12 @@
   --unsolved: #414A4C;
 }
 
-html body {
+/* html body {
   background: var(--primary); 
-}
+} */
+
+body { font-size: 16px; color: #686B5F; background-color: #DBDED3; }
+/* body { font-size: 16px; color: #686B5F; background-color: #731a54; } */
 
 h1 {
   color: var(--secondary);
@@ -63,7 +66,7 @@ body{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: #2B061E;
+	/* background: #2B061E; */
 }
 .content{	display: flex;}
 /* ////////////////////////////////////////////////
@@ -178,70 +181,15 @@ body{
 	}
 }
 
-/* TABLE  */
-@import url(https://fonts.googleapis.com/css?family=Glegoo);
-
-html {
-  font-family:glegoo;
-  color: #222;
-  text-transform: uppercase;
-  letter-spacing:3px;
-}
-
-table {
-  margin:50px auto;
-  border-collapse:collapse;
-  width:70%;
-  height:auto;
-  outline:5px solid #000;
-    min-width:600px;
-}
-
-
-td{
-  display:inline;
-  text-align: center;
-  margin:0px;
-  float:left;
-  outline:4px solid #333;
-  margin:-1px;
-  background:#e5e1d6;
-}
-
-.one{
-  width:25%; 
-  height:10vw;
-  font-size: 5vw;
-
-}
-
-.two {
-  width: 75%;
-  height: 5vw;
-  font-size: 2.5vw;
-}
-
-.three {
-  width:50%;
-  height: 5vw; 
-  font-size: 2.5vw;
-}
-
-.four {
-  width: 25%;
-  height: 5vw;
-  font-size: 2.5vw;
-}
-
-.five {
-  width:100%;
-  height:8vw;
-  font-size: 4.5vw;
-  min-width:600px;
-}
 </style>
 <body>
-    <div class="container-gadget">
+    <div class="container-gadget" 
+		style="
+		border: 1px solid #2B061E;
+		background: #731a54;
+		border-radius: 10px;
+		"
+	>
         <h1>Morse Code</h1>
         <p id="word"></p>
         <input id="input" type="text" autocomplete="off" placeholder="text" />
@@ -253,30 +201,110 @@ td{
 				<span>click</span>
 			</div>
 		</div>
+		<p id="result" style="color: white; font-weight: bold;">Hold duration: 0 ms</p>
+
+		<h1>Кодування Морзе</h1>
+		<p>Натискайте кнопку, щоб створити сигнал:</p>
+		<button id="morseBtn">Натисніть тут</button>
+		<p id="result">Тривалість натискання: 0 мс</p>
+		<div id="morseOutput"></div>
+		<p class="info">Коротке натискання (<200мс) = крапка (·)<br>Довге натискання (≥200мс) = тире (-)</p>
 	</div>
-
-
-
-
-<table>
-	<td class=one> __. </td>
-	<td class=two>MORSE</td>
-	<td class=three>PS – AI – INDD</td>
-	<td class=four>2025</td>
-	<tr><td class=five>..- ..-- sos</td></tr>
-	<tr><td class=five>..- ..-- sos</td></tr>
-</table>
-  
-
-	
 
     <script>
         const morseButton = document.getElementById('morseButton');
-        
+		const btn = document.getElementById('morseBtn');
+    const result = document.getElementById('result');
+    const morseOutput = document.getElementById('morseOutput');
+
+    let pressStartTime = 0;
+    let morseCode = '';
+
+    btn.addEventListener('mousedown', () => {
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('mouseup', () => {
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      // Визначаємо символ Морзе
+      const symbol = duration < 200 ? '·' : '-';
+      morseCode += symbol;
+      morseOutput.textContent = morseCode;
+    });
+
+    // Для touch-пристроїв
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      const symbol = duration < 200 ? '·' : '-';
+      morseCode += symbol;
+      morseOutput.textContent = morseCode;
+    });
+
+    // Додаткова функціональність - очищення коду
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        morseCode = '';
+        morseOutput.textContent = '';
+        result.textContent = 'Тривалість натискання: 0 мс';
+      }
+    });
+	
         // Додаємо обробник події для натискання
         morseButton.addEventListener('mousedown', function() {
+
+			// console.log('check length here ');
+			// const btn = document.getElementById('holdBtn');
+			const result = document.getElementById('result');
+
+			let pressStartTime = 0;
+			pressStartTime = Date.now();
+
+			morseButton.addEventListener('mouseup', () => {
+				const pressEndTime = Date.now();
+				const duration = pressEndTime - pressStartTime;
+				res = '';
+				console.log(1, duration, typeof duration);
+
+				if ( duration > 200 ) {
+					console.log('LONG');
+					res = '_';
+				} else {
+					console.log('SHORT');
+					res = '.';
+				}
+
+				// result.textContent = `Hold duration: ${duration} ms`;
+				result.textContent = res;
+			});
+
+			// Optional: for mobile/touch devices
+			morseButton.addEventListener('touchstart', () => {
+				pressStartTime = Date.now();
+			});
+
+			morseButton.addEventListener('touchend', () => {
+				const pressEndTime = Date.now();
+				const duration = pressEndTime - pressStartTime;
+
+				console.log(2, duration, typeof duration);
+				result.textContent = `Hold duration: ${duration} ms`;
+			});
+
             this.classList.add('active');
         });
+		
         
         // Додаємо обробник події для відпускання
         morseButton.addEventListener('mouseup', function() {

@@ -197,40 +197,80 @@ body{
         <input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
     
 	    <div class="content">
-			<div class="btn-vintage" id="morseButton">
+			<!-- <div class="btn-vintage" id="morseButton"> -->
+			<div class="btn-vintage" id="morseBtn">
 				<span>click</span>
 			</div>
 		</div>
+		<p id="result" style="color: white; font-weight: bold;">Hold duration: 0 ms</p>
+
+		<p style="color: white; font-weight: bold;">Натискайте кнопку, щоб створити сигнал:</p>
+		<p id="result" style="color: white; font-weight: bold;">Тривалість натискання: 0 мс</p>
+		<div id="morseOutput"></div>
+		<p class="info" style="color: white; font-weight: bold;">Коротке натискання (<200мс) = крапка (·)<br>Довге натискання (≥200мс) = тире (-)</p>
 	</div>
 
     <script>
         const morseButton = document.getElementById('morseButton');
-        
+		const btn = document.getElementById('morseBtn');
+    const result = document.getElementById('result');
+    const morseOutput = document.getElementById('morseOutput');
+
+    let pressStartTime = 0;
+    let morseCode = '';
+
+    btn.addEventListener('mousedown', () => {
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('mouseup', () => {
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      // Визначаємо символ Морзе
+      const symbol = duration < 200 ? '·' : '-';
+      morseCode += symbol;
+      morseOutput.textContent = morseCode;
+    });
+
+    // Для touch-пристроїв
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      const symbol = duration < 200 ? '·' : '-';
+      morseCode += symbol;
+      morseOutput.textContent = morseCode;
+    });
+
+    // Додаткова функціональність - очищення коду . ???
+    // document.addEventListener('keydown', (e) => {
+    //   if (e.key === 'Escape') {
+    //     morseCode = '';
+    //     morseOutput.textContent = '';
+    //     result.textContent = 'Тривалість натискання: 0 мс';
+    //   }
+    // });
+	
         // Додаємо обробник події для натискання
         morseButton.addEventListener('mousedown', function() {
 
-            this.classList.add('active. check length here ');
-        });
-        
-        // Додаємо обробник події для відпускання
-        morseButton.addEventListener('mouseup', function() {
-            this.classList.remove('active');
-        });
-        
-        // Додаємо обробник для випадку, коли курсор виходить за межі кнопки під час натискання
-        morseButton.addEventListener('mouseleave', function() {
-            if(this.classList.contains('active')) {
-                this.classList.remove('active');
-            }
-        });
-        
-        // Для touch-пристроїв
-        morseButton.addEventListener('touchstart', function() {
+			// console.log('check length here ');
+			// const btn = document.getElementById('holdBtn');
+			const result = document.getElementById('result');
+
+			let pressStartTime = 0;
+			pressStartTime = Date.now();
+
             this.classList.add('active');
-        });
-        
-        morseButton.addEventListener('touchend', function() {
-            this.classList.remove('active');
         });
     </script>
 </body>

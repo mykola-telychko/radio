@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Кодування Морзе з паузами</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      font-size: 24px;
+      padding: 15px 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button:active {
+      background-color: #3e8e41;
+    }
+    #result {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    #morseOutput {
+      font-size: 24px;
+      font-family: monospace;
+      letter-spacing: 5px;
+      margin-top: 30px;
+      min-height: 50px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .info {
+      margin-top: 30px;
+      color: #666;
+      font-size: 14px;
+    }
+    .timing-info {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Кодування Морзе з паузами</h1>
+  <p>Натискайте кнопку, щоб створити сигнал:</p>
+  <button id="morseBtn">Натисніть тут</button>
+  <p id="result">Тривалість натискання: 0 мс</p>
+  <div id="morseOutput"></div>
+  
+  <div class="timing-info">
+    <h3>Стандартні тривалості (1 одиниця = 100мс):</h3>
+    <p>Крапка (·) = 100мс | Тире (-) = 300мс</p>
+    <p>Пауза між символами = 100мс | Пауза між літерами = 300мс</p>
+    <p>Пауза між словами = 700мс</p>
+  </div>
+
+  <div class="info">
+    <p>Натисніть ESC для очищення, SPACE для додавання пробілу (між словами)</p>
+  </div>
+
+  <script>
+    const btn = document.getElementById('morseBtn');
+    const result = document.getElementById('result');
+    const morseOutput = document.getElementById('morseOutput');
+
+    let pressStartTime = 0;
+    let morseCode = '';
+    let lastReleaseTime = 0;
+    const UNIT_DURATION = 100; // 1 одиниця = 100 мс
+
+    function addSymbol(symbol) {
+      const now = Date.now();
+      
+      // Додаємо паузу між символами, якщо це не перший символ
+      if (lastReleaseTime > 0) {
+        const pauseDuration = now - lastReleaseTime;
+        
+        // Пауза між словами (≥700мс)
+        if (pauseDuration >= 7 * UNIT_DURATION) {
+          morseCode += ' / ';
+        } 
+        // Пауза між літерами (≥300мс)
+        else if (pauseDuration >= 3 * UNIT_DURATION) {
+          morseCode += ' ';
+        }
+        // Пауза між символами (≥100мс) вже врахована
+      }
+      
+      morseCode += symbol;
+      morseOutput.textContent = morseCode;
+      lastReleaseTime = now;
+    }
+
+    btn.addEventListener('mousedown', () => {
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('mouseup', () => {
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      // Визначаємо символ Морзе
+      const symbol = duration < 2 * UNIT_DURATION ? '·' : '-';
+      addSymbol(symbol);
+    });
+
+    // Для touch-пристроїв
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      pressStartTime = Date.now();
+    });
+
+    btn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      const pressEndTime = Date.now();
+      const duration = pressEndTime - pressStartTime;
+      result.textContent = `Тривалість натискання: ${duration} мс`;
+      
+      const symbol = duration < 2 * UNIT_DURATION ? '·' : '-';
+      addSymbol(symbol);
+    });
+
+    // Додаткова функціональність
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        // Очищення коду
+        morseCode = '';
+        morseOutput.textContent = '';
+        result.textContent = 'Тривалість натискання: 0 мс';
+        lastReleaseTime = 0;
+      } else if (e.key === ' ') {
+        // Додавання пробілу (паузи між словами)
+        addSymbol(' / ');
+        e.preventDefault(); // Заборона прокрутки сторінки
+      }
+    });
+  </script>
+</body>
+</html>
