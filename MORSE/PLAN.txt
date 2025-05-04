@@ -4,6 +4,12 @@
 integrate 
 
 DESIGN 
+textarea
+https://codepen.io/telychko-mykola/pen/NWVVWpr
+
+range
+https://codepen.io/telychko-mykola/pen/myyxjgV
+
 https://codepen.io/telychko-mykola/pen/gbbeawb
 https://codepen.io/telychko-mykola/pen/pvvLgzK
 
