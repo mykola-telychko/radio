@@ -1,11 +1,13 @@
 - розрахунок часу та довжини стрічки
 - знайти старі бігунки фейдери 
+- пробіл та ентер зробити евент лісенери. 
 
 integrate 
 
 DESIGN 
 textarea
 https://codepen.io/telychko-mykola/pen/NWVVWpr
+https://github.com/mykola-telychko/web-design-examples/blob/main/btns%20inputs/textarea.html
 
 range
 https://codepen.io/telychko-mykola/pen/myyxjgV
@@ -14,6 +16,7 @@ https://codepen.io/telychko-mykola/pen/gbbeawb
 https://codepen.io/telychko-mykola/pen/pvvLgzK
 
 https://morsecode.world/international/translator.html
+
 
 
 
