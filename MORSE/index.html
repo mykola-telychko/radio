@@ -198,26 +198,33 @@
 		"
 	>
 		
-	<div class="content" style="border: 1px solid cyan">
+	<div class="content" style="border: 1px solid cyan; height: 500px;">
 			<div class="flex-block" style="border: 1px solid #e7d5e1">
-				<h1>Morse Code</h1>
-				<p id="word"></p>
-				<input id="input" type="text" autocomplete="off" placeholder="text" />
-				<input id="code" type="text" autocomplete="off" placeholder="code" />
-				<input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
-			</div>
+        <div style="border: 1px solid rgb(255, 0, 111); height: 300px;">
+          <h3>Morse Code</h3>
+          <p id="word"></p>
+          <input id="input" type="text" autocomplete="off" placeholder="text" />
+          <input id="code" type="text" autocomplete="off" placeholder="code" />
+          <input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
+			  </div>
+
+        <div style="border: 1px solid rgb(208, 255, 0)">
+          <p id="result"  class="txt">Hold duration: 0 ms</p>
+
+          <p  class="txt">Натискайте кнопку, щоб створити сигнал:</p>
+          <p id="result"  class="txt" >Тривалість натискання: 0 мс</p>
+          <div id="morseOutput" class="txt" ></div>
+          <p class="info txt" >Коротке натискання (<200мс) = крапка (·)<br>Довге натискання (≥200мс) = тире (-)</p>
+        
+        </div>
+        
+      </div>
 			<!-- <div class="btn-vintage" id="morseButton"> -->
 			<div class="btn-vintage" id="morseBtn">
 				<span>click</span>
 			</div>
 		</div>
-		<p id="result"  class="txt">Hold duration: 0 ms</p>
 
-		<p  class="txt">Натискайте кнопку, щоб створити сигнал:</p>
-		<p id="result"  class="txt" >Тривалість натискання: 0 мс</p>
-		<div id="morseOutput" class="txt" ></div>
-		<p class="info txt" >Коротке натискання (<200мс) = крапка (·)<br>Довге натискання (≥200мс) = тире (-)</p>
-	
 	</div>
 
     <script>
