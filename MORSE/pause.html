@@ -89,7 +89,6 @@
       // Додаємо паузу між символами, якщо це не перший символ
       if (lastReleaseTime > 0) {
         const pauseDuration = now - lastReleaseTime;
-        
         // Пауза між словами (≥700мс)
         if (pauseDuration >= 7 * UNIT_DURATION) {
           morseCode += ' / ';

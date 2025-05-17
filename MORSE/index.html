@@ -186,6 +186,46 @@
 	color: white; font-weight: bold;
   }
   
+.container-flds {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; /* Відступи між елементами */
+  width: 300px; 
+}
+
+.input-group {
+  padding: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.input-group input {
+  width: 100%; /* Щоб input заповнював батьківський div */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.readonly-textarea { background-color: #fffde7; }
+
+
+ .corpus {
+      display: flex;
+  }
+ .half {
+      flex: 1; /* Розподіляє простір рівномірно */
+      min-height: 100px; /* Мінімальна висота для наочності */
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    /* Кольори для наочності */
+    /* .half:first-child {
+      background-color: #f0f0f0;
+    }
+    
+    .half:last-child {
+      background-color: #e0e0e0;
+    } */
  </style>
 </head>
 <body>
@@ -198,14 +238,28 @@
 		"
 	>
 		
-	<div class="content" style="border: 1px solid cyan; height: 500px;">
-			<div class="flex-block" style="border: 1px solid #e7d5e1">
+	<div class="corpus" style="border: 1px solid cyan; height: 500px;">
+			
+      <div class="flex-block half" style="border: 1px solid #e7d5e1" >
+
         <div style="border: 1px solid rgb(255, 0, 111); height: 300px;">
           <h3>Morse Code</h3>
           <p id="word"></p>
-          <input id="input" type="text" autocomplete="off" placeholder="text" />
-          <input id="code" type="text" autocomplete="off" placeholder="code" />
-          <input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
+
+
+          <div class="container-flds">
+              <div class="input-group">
+                <!-- <input id="input" type="text" autocomplete="off" placeholder="text" /> -->
+                <textarea id="readonly-textarea" class="readonly-textarea" rows="4" cols="50" >These are the terms and conditions. This textarea is read-only, so users can read but not modify the content.</textarea>
+              </div>
+              <div class="input-group">
+                <input id="code" type="text" autocomplete="off" placeholder="code" />
+              </div>
+              <div class="input-group">
+                <input id="stripe" type="text" autocomplete="off" placeholder="stripe" />
+              </div>
+          </div>
+
 			  </div>
 
         <div style="border: 1px solid rgb(208, 255, 0)">
@@ -219,10 +273,14 @@
         </div>
         
       </div>
+
 			<!-- <div class="btn-vintage" id="morseButton"> -->
-			<div class="btn-vintage" id="morseBtn">
-				<span>click</span>
+			<div class="half" >
+          <div class="btn-vintage" id="morseBtn">
+            <span>click</span>
+          </div>
 			</div>
+      
 		</div>
 
 	</div>
