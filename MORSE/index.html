@@ -23,7 +23,10 @@
   h1 {
     color: var(--secondary);
   }
-  
+  .desc{
+    color: white;
+  }
+
   .container {
     text-align: center;
     font-family: 'Dosis', sans-serif;
@@ -205,7 +208,12 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.readonly-textarea { background-color: #fffde7; }
+.readonly-textarea { 
+  background-color: #fffde7;
+  width: 400px;
+  height: 100px;
+  font-size: -webkit-xxx-large;
+ }
 
 
  .corpus {
@@ -243,14 +251,15 @@
       <div class="flex-block half" style="border: 1px solid #e7d5e1" >
 
         <div style="border: 1px solid rgb(255, 0, 111); height: 300px;">
-          <h3>Morse Code</h3>
-          <p id="word"></p>
+          <h3 class="desc">Morse Code</h3>
 
+          <p id="word"></p>
 
           <div class="container-flds">
               <div class="input-group">
                 <!-- <input id="input" type="text" autocomplete="off" placeholder="text" /> -->
-                <textarea id="readonly-textarea" class="readonly-textarea" rows="4" cols="50" >These are the terms and conditions. This textarea is read-only, so users can read but not modify the content.</textarea>
+                <textarea placeholder="code" id="morseOutput" class="readonly-textarea input-group" rows="4" cols="50" ></textarea>
+                <!-- <div id="morseOutput" class="txt" ></div> -->
               </div>
               <div class="input-group">
                 <input id="code" type="text" autocomplete="off" placeholder="code" />
@@ -266,8 +275,7 @@
           <p id="result"  class="txt">Hold duration: 0 ms</p>
 
           <p  class="txt">Натискайте кнопку, щоб створити сигнал:</p>
-          <p id="result"  class="txt" >Тривалість натискання: 0 мс</p>
-          <div id="morseOutput" class="txt" ></div>
+          
           <p class="info txt" >Коротке натискання (<200мс) = крапка (·)<br>Довге натискання (≥200мс) = тире (-)</p>
         
         </div>
@@ -280,7 +288,7 @@
             <span>click</span>
           </div>
 			</div>
-      
+
 		</div>
 
 	</div>
