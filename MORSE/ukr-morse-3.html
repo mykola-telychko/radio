@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORSE-UA</title>
+  <style>
+    /* Шрифти */
+    @import url('https://fonts.googleapis.com/css?family=Glegoo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+    
+    html {
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    body {
+      background: #f4f4f4;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    p {
+      text-align: center;
+      font-family: 'PT Mono', monospace;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 90%;
+      min-width: 600px;
+      font-family: 'PT Mono', monospace;
+    }
+
+    td {
+      border: 2px solid #444;
+      padding: 1rem;
+      background: #e5e1d6;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .signal {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: #000;
+      letter-spacing: 5px;
+    }
+
+    .character {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* Стилі для нової таблиці з одним стовпчиком */
+    .combined-table td {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .combined-signal {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: #000;
+      letter-spacing: 5px;
+      margin-right: 1rem;
+    }
+    
+    .combined-character {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-left: 1rem;
+    }
+    
+    .combined-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .signal, .combined-signal {
+        font-size: 1.8rem;
+      }
+      .character, .combined-character {
+        font-size: 1.5rem;
+      }
+      .combined-cell {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1> Азбука морзе українською</h1>
+  <p>зауваження та побажання: mykola.telychko@outlook.com </p>
+
+  <h2>2 стовпці</h2>
+  <table class="row-2">
+    <tr>
+      <td class="character">Сигнал</td>
+      <td class="character">Символ</td>
+    </tr>
+    <tr>
+      <td class="signal">.-</td>
+      <td class="character">А</td>
+    </tr>
+    <tr>
+      <td class="signal">-.-.</td>
+      <td class="character">Б</td>
+    </tr> 
+    <tr>
+      <td class="signal">-..</td>
+      <td class="character">В</td>
+    </tr>
+    <tr>
+      <td class="signal">--.</td>
+      <td class="character">Г</td>    
+    </tr>
+    <tr>
+      <td class="signal">....</td>
+      <td class="character">Ґ</td>
+    </tr>   
+    <tr>
+      <td class="signal">..</td>
+      <td class="character">Д</td>
+    </tr>
+    <tr>
+      <td class="signal">. .</td>
+      <td class="character">Е</td>
+    </tr>
+    <tr>
+      <td class="signal">..-.</td>
+      <td class="character">Є</td>
+    </tr> 
+    <tr>
+      <td class="signal">..-</td>
+      <td class="character">Ж</td>
+    </tr>
+    <tr>
+      <td class="signal">--..</td>
+      <td class="character">З</td>
+    </tr>
+  </table>
+
+  <h2>Об'єднаний варіант</h2>
+  <table class="combined-table">
+    <tr>
+      <td>Сигнал/Символ</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">.-</span>
+          <span class="combined-character">А</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">-.-.</span>
+          <span class="combined-character">Б</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">-..</span>
+          <span class="combined-character">В</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">--.</span>
+          <span class="combined-character">Г</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">....</span>
+          <span class="combined-character">Ґ</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">..</span>
+          <span class="combined-character">Д</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">. .</span>
+          <span class="combined-character">Е</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">..-.</span>
+          <span class="combined-character">Є</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">..-</span>
+          <span class="combined-character">Ж</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="combined-signal">--..</span>
+          <span class="combined-character">З</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корабельний сигнал</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        
+        .signal-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #0066cc;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            outline: none;
+            user-select: none;
+        }
+        
+        .signal-btn:hover {
+            background-color: #0055aa;
+        }
+        
+        .signal-btn:active, .signal-btn.active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #004488;
+        }
+        
+        .signal-btn:focus {
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <button class="signal-btn" id="signalButton" tabindex="0">🚢 ТРИМАЙ ДЛЯ СИГНАЛУ 🚢</button>
+
+    <script>
+        const signalButton = document.getElementById('signalButton');
+        let audioContext;
+        let oscillator;
+        let gainNode;
+
+        function startSignal() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            oscillator = audioContext.createOscillator();
+            gainNode = audioContext.createGain();
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 800;
+            gainNode.gain.value = 1;
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.start();
+            signalButton.classList.add('active');
+        }
+
+        function stopSignal() {
+            if (gainNode) {
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                setTimeout(() => {
+                    if (oscillator) {
+                        oscillator.stop();
+                    }
+                }, 100);
+            }
+            signalButton.classList.remove('active');
+        }
+
+        // Обробники миші
+        signalButton.addEventListener('mousedown', startSignal);
+        signalButton.addEventListener('mouseup', stopSignal);
+        signalButton.addEventListener('mouseleave', stopSignal);
+
+        // Обробники клавіатури
+        signalButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                startSignal();
+            }
+        });
+
+        signalButton.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                stopSignal();
+            }
+        });
+
+        // Зупинити сигнал при втраті фокусу
+        signalButton.addEventListener('blur', stopSignal);
+    </script>
+</body>
+</html>
