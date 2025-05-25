@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORSE-UA</title>
+  <style>
+    /* Шрифти */
+    @import url('https://fonts.googleapis.com/css?family=Glegoo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+    
+    html {
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    body {
+      background: #f4f4f4;
+      padding: 2rem;
+    }
+
+    h1, h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    p {
+      text-align: center;
+      font-family: 'PT Mono', monospace;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    table {
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 90%;
+      min-width: 600px;
+      font-family: 'PT Mono', monospace;
+    }
+
+    td {
+      border: 2px solid #444;
+      padding: 1rem;
+      background: #e5e1d6;
+      text-align: center;
+      vertical-align: middle;
+      min-width: 120px;
+    }
+
+    .signal {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 900;
+      font-size: 2rem;
+      color: #000;
+      letter-spacing: 5px;
+    }
+
+    .character {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .combined-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      td {
+        min-width: 80px;
+        padding: 0.5rem;
+      }
+      .signal {
+        font-size: 1.5rem;
+      }
+      .character {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Азбука Mорзе українською</h1>
+  <p>зауваження та побажання: mykola.telychko@outlook.com</p>
+
+  <table>
+    <!-- Перший рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-</span>
+          <span class="character">А</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-...</span>
+          <span class="character">Б</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.--</span>
+          <span class="character">В</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.</span>
+          <span class="character">Г</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.-</span>
+          <span class="character">Ґ</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Другий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-..</span>
+          <span class="character">Д</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.</span>
+          <span class="character">Е</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..-..</span>
+          <span class="character">Є</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">...</span>
+          <span class="character">Ж</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--..</span>
+          <span class="character">З</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Третій рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..</span>
+          <span class="character">И</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.---</span>
+          <span class="character">І</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.-</span>
+          <span class="character">Ї</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-..</span>
+          <span class="character">Й</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.-</span>
+          <span class="character">К</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Четвертий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-..</span>
+          <span class="character">Л</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--</span>
+          <span class="character">М</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.</span>
+          <span class="character">Н</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">---</span>
+          <span class="character">О</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.--.</span>
+          <span class="character">П</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- П'ятий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-.</span>
+          <span class="character">Р</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">...</span>
+          <span class="character">С</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-</span>
+          <span class="character">Т</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..-</span>
+          <span class="character">У</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..-</span>
+          <span class="character">Ф</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Шостий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">....</span>
+          <span class="character">Х</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.-.</span>
+          <span class="character">Ц</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">---.</span>
+          <span class="character">Ч</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">----</span>
+          <span class="character">Ш</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.-</span>
+          <span class="character">Щ</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Сьомий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.--</span>
+          <span class="character">Ь</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..--</span>
+          <span class="character">Ю</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.--.-</span>
+          <span class="character">Я</span>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h2>Цифри</h2>
+  <table>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-----</span>
+          <span class="character">0</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.----</span>
+          <span class="character">1</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..---</span>
+          <span class="character">2</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">...--</span>
+          <span class="character">3</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">....-</span>
+          <span class="character">4</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.....</span>
+          <span class="character">5</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-....</span>
+          <span class="character">6</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--...</span>
+          <span class="character">7</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">---..</span>
+          <span class="character">8</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">----.</span>
+          <span class="character">9</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
