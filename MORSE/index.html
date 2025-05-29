@@ -288,13 +288,19 @@
             <span>click</span>
           </div>
 			</div>
+      <div class="half" >
+          <div class="btn-vintage" id="mon">
+            <span>click</span>
+          </div>
+			</div>
 
 		</div>
 
 	</div>
 
     <script>
-        const morseButton = document.getElementById('morseButton');
+
+    const morseButton = document.getElementById('morseButton');
 		const btn = document.getElementById('morseBtn');
 		const result = document.getElementById('result');
 		const morseOutput = document.getElementById('morseOutput');
@@ -333,6 +339,62 @@
       morseCode += symbol;
       morseOutput.textContent = morseCode;
     });
+
+    // audio -- begin
+        let audioContext;
+        let oscillator;
+        let gainNode;
+
+        function startSignal() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            oscillator = audioContext.createOscillator();
+            gainNode = audioContext.createGain();
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 800;
+            gainNode.gain.value = 1;
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.start();
+            btn.classList.add('active');
+            // signalButton.classList.add('active');
+        }
+          function stopSignal() {
+            if (gainNode) {
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                setTimeout(() => {
+                    if (oscillator) {
+                        oscillator.stop();
+                    }
+                }, 100);
+            }
+            // signalButton.classList.remove('active');
+            btn.classList.remove('active');
+        }
+        btn.addEventListener('mousedown', startSignal);
+        btn.addEventListener('mouseup', stopSignal);
+        btn.addEventListener('mouseleave', stopSignal);
+        // Обробники клавіатури
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                startSignal();
+            }
+        });
+        btn.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                stopSignal();
+            }
+        });
+
+        // Зупинити сигнал при втраті фокусу
+        btn.addEventListener('blur', stopSignal);
+    // audio -- end
 
     // Додаткова функціональність - очищення коду . ???
     // document.addEventListener('keydown', (e) => {

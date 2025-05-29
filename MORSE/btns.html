@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об'ємні кнопки - 4 варіанти</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,300');
+        
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #2B061E;
+            font-family: 'Roboto Slab', serif;
+            color: white;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            margin-top: 20px;
+        }
+        
+        .button-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #eaca6e;
+            font-size: 18px;
+        }
+        
+        /* Оригінальна кнопка */
+        .btn-vintage {
+            display: block;
+            text-align: center;
+            height: 170px;
+            width: 170px;
+            line-height: 170px;
+            background: #221e25;
+            color: #FDFBDA;
+            border: 3px solid #eaca6e;
+            border-radius: 50%;
+            font-size: 70px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            box-shadow: 
+                inset -3px -3px 3px -2px #ffedad, 
+                1px 1px 1px 2px #73604c, 
+                inset 1px 1px 4px 2px #73604c, 
+                -1px -1px 0px 0px #ffedad, 
+                1px 2px 6px 4px rgba(20, 20, 20, 0.7), 
+                inset 2px 2px 6px 6px #000000;
+            transition: all .07s linear;
+            color: #ff3333;
+        }
+        
+        .btn-vintage span {
+            background-color: #630000;
+            color: transparent;
+            text-shadow: 1px 1px 1px #ff6666;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+        }
+        
+        .btn-vintage:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-vintage:active, .btn-vintage.active {
+            box-shadow: 
+                inset -3px -3px 3px -2px #ffedad, 
+                1px 1px 1px 2px #73604c, 
+                inset 1px 1px 4px 2px #73604c, 
+                -1px -1px 0px 0px #ffedad, 
+                0px 0px 2px 4px rgba(20, 20, 20, 0.7), 
+                inset 4px 4px 6px 6px #000000;
+        }
+        
+        .btn-vintage:active span, .btn-vintage.active span {
+            background-color: #ffffff;
+            color: transparent;
+            text-shadow: -1px -1px 15px #ff3333;
+        }
+        
+        /* Варіант 1: Металічна об'ємна кнопка */
+        .btn-metallic {
+            display: block;
+            text-align: center;
+            height: 170px;
+            width: 170px;
+            line-height: 170px;
+            background: linear-gradient(145deg, #3a353f, #1e1a21);
+            color: #FDFBDA;
+            border: 3px solid #eaca6e;
+            border-radius: 50%;
+            font-size: 70px;
+            cursor: pointer;
+            box-shadow: 
+                inset 3px 3px 5px rgba(255, 255, 255, 0.1),
+                inset -3px -3px 5px rgba(0, 0, 0, 0.5),
+                0 10px 20px rgba(0, 0, 0, 0.6),
+                0 0 0 4px #2a241f;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-metallic:before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                rgba(255, 255, 255, 0.1) 30%, 
+                transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .btn-metallic:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                inset 3px 3px 5px rgba(255, 255, 255, 0.1),
+                inset -3px -3px 5px rgba(0, 0, 0, 0.5),
+                0 15px 25px rgba(0, 0, 0, 0.8),
+                0 0 0 4px #2a241f;
+        }
+        
+        .btn-metallic:active {
+            transform: translateY(2px);
+            box-shadow: 
+                inset 3px 3px 5px rgba(0, 0, 0, 0.3),
+                inset -3px -3px 5px rgba(0, 0, 0, 0.5),
+                0 5px 10px rgba(0, 0, 0, 0.6),
+                0 0 0 4px #2a241f;
+        }
+        
+        /* Варіант 2: Глибокий об'ємний ефект з градієнтом */
+        .btn-deep {
+            display: block;
+            text-align: center;
+            height: 170px;
+            width: 170px;
+            line-height: 170px;
+            background: radial-gradient(circle at 30% 30%, 
+                #3a3242 0%, 
+                #221c26 60%, 
+                #1a161e 100%);
+            color: #FDFBDA;
+            border: 3px solid #eaca6e;
+            border-radius: 50%;
+            font-size: 70px;
+            cursor: pointer;
+            box-shadow: 
+                inset 0 -15px 30px rgba(0, 0, 0, 0.7),
+                inset 0 15px 15px rgba(255, 237, 173, 0.1),
+                0 10px 25px rgba(0, 0, 0, 0.8),
+                0 0 0 5px #2a241f;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .btn-deep:after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 70% 70%, 
+                rgba(255, 255, 255, 0.05) 0%, 
+                transparent 70%);
+            filter: blur(5px);
+        }
+        
+        .btn-deep:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                inset 0 -15px 30px rgba(0, 0, 0, 0.7),
+                inset 0 15px 15px rgba(255, 237, 173, 0.15),
+                0 15px 35px rgba(0, 0, 0, 1),
+                0 0 0 5px #2a241f;
+        }
+        
+        .btn-deep:active {
+            transform: scale(0.98);
+            box-shadow: 
+                inset 0 -5px 20px rgba(0, 0, 0, 0.8),
+                inset 0 5px 10px rgba(255, 237, 173, 0.05),
+                0 5px 15px rgba(0, 0, 0, 0.9),
+                0 0 0 5px #2a241f;
+        }
+        
+        /* Варіант 3: Неоновий об'ємний ефект */
+        .btn-neon {
+            display: block;
+            text-align: center;
+            height: 170px;
+            width: 170px;
+            line-height: 170px;
+            background: radial-gradient(circle at 30% 30%, 
+                #2e1a47 0%, 
+                #1a0e2b 60%, 
+                #0f0818 100%);
+            color: #FDFBDA;
+            border: 3px solid #9d4edd;
+            border-radius: 50%;
+            font-size: 70px;
+            cursor: pointer;
+            box-shadow: 
+                inset 0 -10px 30px rgba(157, 78, 221, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.05),
+                0 0 15px rgba(157, 78, 221, 0.5),
+                0 0 30px rgba(157, 78, 221, 0.3),
+                0 0 0 4px #2a1a3a;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                #ff00ff, 
+                #9d4edd, 
+                #00ffff, 
+                #9d4edd, 
+                #ff00ff);
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        
+        .btn-neon:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                inset 0 -10px 30px rgba(157, 78, 221, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.1),
+                0 0 20px rgba(157, 78, 221, 0.8),
+                0 0 40px rgba(157, 78, 221, 0.5),
+                0 0 0 4px #2a1a3a;
+        }
+        
+        .btn-neon:hover:before {
+            opacity: 1;
+            animation: animate 20s linear infinite;
+        }
+        
+        @keyframes animate {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        .btn-neon:active {
+            transform: translateY(2px);
+            box-shadow: 
+                inset 0 -5px 20px rgba(157, 78, 221, 0.4),
+                inset 0 5px 10px rgba(255, 255, 255, 0.05),
+                0 0 10px rgba(157, 78, 221, 0.6),
+                0 0 20px rgba(157, 78, 221, 0.3),
+                0 0 0 4px #2a1a3a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Об'ємні круглі кнопки</h1>
+    <div class="buttons-container">
+        <div class="button-group">
+            <div class="button-title">Оригінальна</div>
+            <div class="btn-vintage">
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <div class="button-title">Металічна</div>
+            <div class="btn-metallic">
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <div class="button-title">Глибокий об'єм</div>
+            <div class="btn-deep">
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <div class="button-title">Неонова</div>
+            <div class="btn-neon">
+                <span></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
