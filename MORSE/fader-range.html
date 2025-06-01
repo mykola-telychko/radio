@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простий Повзунок</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        /* Імпорт шрифту Roboto */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+        body {
+            background-color: #141414;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            user-select: none; /* Запобігає виділенню тексту */
+            font-family: 'Roboto', sans-serif; /* Застосовуємо шрифт до всього тіла */
+        }
+
+        div.sliderContainer {
+            width: 25em; /* Відносна ширина контейнера */
+            max-width: 90%; /* Обмеження максимальної ширини для мобільних */
+            text-align: center;
+            padding: 20px; /* Додаємо відступ */
+            background-color: #222; /* Трохи темніший фон для контейнера */
+            border-radius: 10px; /* Закруглені кути контейнера */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тінь для глибини */
+        }
+
+        #slider {
+            -webkit-appearance: none; /* Видаляє стандартний вигляд повзунка для WebKit браузерів */
+            appearance: none; /* Видаляє стандартний вигляд повзунка */
+            height: 18px !important; /* Висота треку повзунка */
+            width: 100%; /* Повзунок займає всю ширину контейнера */
+            border-radius: 10em; /* Сильно закруглені кути треку */
+            background-color: #000; /* Колір треку повзунка */
+            outline: none; /* Видаляє обведення при фокусі */
+            margin-bottom: 14px; /* Відступ під повзунком */
+        }
+
+        /* Стилі для повзунка (thumb) у WebKit браузерах (Chrome, Safari) */
+        #slider::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Видаляє стандартний вигляд повзунка */
+            appearance: none; /* Видаляє стандартний вигляд повзунка */
+            width: 25px; /* Ширина повзунка */
+            height: 25px; /* Висота повзунка */
+            border-radius: 50%; /* Робить повзунок круглим */
+            background: #dbc500; /* Колір повзунка (жовтий) */
+            cursor: pointer; /* Змінює курсор на "руку" при наведенні */
+            border: 3px solid #f4f4f4; /* Біла рамка навколо повзунка */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Тінь для повзунка */
+        }
+
+        /* Стилі для повзунка (thumb) у Firefox */
+        #slider::-moz-range-thumb {
+            width: 25px; /* Ширина повзунка */
+            height: 25px; /* Висота повзунка */
+            border-radius: 50%; /* Робить повзунок круглим */
+            background-color: #dbc500; /* Колір повзунка (жовтий) */
+            cursor: pointer; /* Змінює курсор на "руку" при наведенні */
+            border: 3px solid #f4f4f4; /* Біла рамка навколо повзунка */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Тінь для повзунка */
+        }
+
+        #output {
+            color: #d3d3d3; /* Колір тексту для виводу значення */
+            letter-spacing: 1.5px; /* Міжбуквений інтервал */
+            font-size: 24px; /* Збільшений розмір шрифту для кращої читабельності */
+            font-weight: bold; /* Жирний шрифт */
+            display: block; /* Робить елемент блоковим для кращого розташування */
+            margin-top: 10px; /* Відступ зверху */
+        }
+    </style>
+</head>
+<body>
+    <div class="sliderContainer">
+        <input type="range" value="0" min="-50" max="50" id="slider">
+        <span id="output">0</span> </div>
+
+    <script>
+        // Отримуємо посилання на елементи DOM
+        const slider = document.getElementById('slider');
+        const output = document.getElementById('output');
+
+        // Встановлюємо початкове значення виводу відповідно до значення повзунка
+        output.textContent = slider.value;
+
+        // Додаємо слухач подій для повзунка
+        slider.addEventListener('input', () => {
+            // Оновлюємо текст у span при зміні значення повзунка
+            output.textContent = slider.value;
+        });
+    </script>
+</body>
+</html>

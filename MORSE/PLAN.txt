@@ -1,3 +1,5 @@
+- зробити фейдер однаковим по стилю з кнопкою. 
+
 ukr-morse-3.html - там де один стовпчик зробити два стовпчики для зручності.
 (кожен сповпчик містить і сигнал і символ)
 
@@ -16,8 +18,11 @@ range
 https://codepen.io/telychko-mykola/pen/myyxjgV
 
 https://codepen.io/telychko-mykola/pen/gbbeawb
+
+markap newspaper
 https://codepen.io/telychko-mykola/pen/pvvLgzK
 
+site-example
 https://morsecode.world/international/translator.html
 
 
