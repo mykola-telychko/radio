@@ -1,120 +1,268 @@
 
-
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MORSE Азбука морзе українською</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MORSE-UA</title>
   <style>
-@import url(https://fonts.googleapis.com/css?family=Glegoo);
+    /* Шрифти */
+    @import url('https://fonts.googleapis.com/css?family=Glegoo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+    
+    html {
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-html {
-  font-family:glegoo;
-  color: #222;
-  text-transform: uppercase;
-  letter-spacing:3px;
-}
+    body {
+      background: #f4f4f4;
+      padding: 1rem;
+    }
 
-table {
-  margin:50px auto;
-  border-collapse:collapse;
-  width:70%;
-  height:auto;
-  outline:5px solid #000;
-    min-width:600px;
-}
+    h1, h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
 
+    p {
+      text-align: center;
+      font-family: 'PT Mono', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
 
-td{
-  display:inline;
-  text-align: center;
-  margin:0px;
-  float:left;
-  outline:4px solid #333;
-  margin:-1px;
-  background:#e5e1d6;
-}
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 55%;
+      min-width: 500px;
+      font-family: 'PT Mono', monospace;
+    }
 
-.one{
-  width:25%; 
-  height:10vw;
-  font-size: 5vw;
+    td {
+      border: 2px solid #444;
+      padding: 0.3rem 0.5rem;
+      background: #e5e1d6;
+      text-align: center;
+      vertical-align: middle;
+      min-width: 80px;
+      height: 60px;
+    }
 
-}
+    .signal {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: #000;
+      letter-spacing: 3px;
+      line-height: 1.2;
+    }
 
-.two {
-  width: 75%;
-  height: 5vw;
-  font-size: 2.5vw;
-}
+    .character {
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
 
-.three {
-  width:50%;
-  height: 5vw; 
-  font-size: 2.5vw;
-}
+    .combined-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+      height: 100%;
+    }
 
-.four {
-  width: 25%;
-  height: 5vw;
-  font-size: 2.5vw;
-}
-
-.five {
-  width:100%;
-  height:8vw;
-  font-size: 4.5vw;
-  min-width:600px;
-}
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      td {
+        min-width: 60px;
+        padding: 0.2rem 0.3rem;
+        height: 50px;
+      }
+      
+      .signal {
+        font-size: 1.2rem;
+      }
+      
+      .character {
+        font-size: 1.1rem;
+      }
+      
+      table {
+        min-width: 300px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>MORSE Азбука морзе українською</h1>
-  <p>Ця таблиця містить кодування азбуки Морзе українською мовою.</p>
-  <div class="container">
-    <table>
-      <tr>
-        <td class="one">Сигнал</td>
-        <td class="two">Символ</td>
-        <td class="three">Формат</td>
-        <td class="four">Рік</td>
-        <td class="five">Приклад</td>
-      </tr>
-    </table>
-<table>
-  <td class=one> __. </td>
-  <td class=two>MORSE Азбука морзе українською</td>
-  <td class=three>PS – AI – INDD</td>
-  <td class=four>2025</td>
-  <tr><td class=five>..- ..-- sos</td></tr>
-  <tr><td class=five>..- ..-- sos</td></tr>
-</table>
-    <table>
-      <tr>
-        <td class="one">•</td>
-        <td class="two">A</td>
-        <td class="three">. -</td>
-        <td class="four">1</td>
-        <td class="five">.-</td>
-      </tr>
-      <tr>
-        <td class="one">•••</td>
-        <td class="two">B</td>
-        <td class="three">- . . .</td>
-        <td class="four">2</td>
-        <td class="five">-...</td>
-      </tr>
-      <tr>
-        <td class="one">••</td>
-        <td class="two">C</td>
-        <td class="three">- . - .</td>
-        <td class="four">3</td>
-        <td class="five">-.-.</td>
-      </tr>
-      <!-- Додайте інші символи тут -->
-    </table>
-  </div>
-</body> 
+  <h1>Азбука Mорзе українською</h1>
+  <!-- <p>зауваження та побажання: mykola.telychko@outlook.com</p> -->
+  <p>mykola.telychko@outlook.com</p>
+
+  <table>
+    <!-- Перший рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-</span>
+          <span class="character">А</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-...</span>
+          <span class="character">Б</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.--</span>
+          <span class="character">В</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.</span>
+          <span class="character">Г</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.-</span>
+          <span class="character">Ґ</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Шостий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">....</span>
+          <span class="character">Х</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-.-.</span>
+          <span class="character">Ц</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">----</span>
+          <span class="character">Ч</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">---</span>
+          <span class="character">Ш</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--.-</span>
+          <span class="character">Щ</span>
+        </div>
+      </td>
+    </tr>
+    
+    <!-- Сьомий рядок -->
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-..-</span>
+          <span class="character">Ь</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..--</span>
+          <span class="character">Ю</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.-.-</span>
+          <span class="character">Я</span>
+        </div>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-----</span>
+          <span class="character">0</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.----</span>
+          <span class="character">1</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">..---</span>
+          <span class="character">2</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">...--</span>
+          <span class="character">3</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">....-</span>
+          <span class="character">4</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">.....</span>
+          <span class="character">5</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">-....</span>
+          <span class="character">6</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">--...</span>
+          <span class="character">7</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">---..</span>
+          <span class="character">8</span>
+        </div>
+      </td>
+      <td>
+        <div class="combined-cell">
+          <span class="signal">----.</span>
+          <span class="character">9</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
 </html>
