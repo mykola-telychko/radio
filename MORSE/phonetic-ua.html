@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Український Алфавіт</title>
+  <style>
+    /* Шрифти */
+    @import url('https://fonts.googleapis.com/css?family=Glegoo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+    /* Додано також PT Mono, якщо ви його мали на увазі */
+    @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+    
+    html {
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 2px; /* Повернуто початкове значення */
+    }
+
+    body {
+      background: #f4f4f4;
+      padding: 1rem;
+      /* Повернуто початковий шрифт, якщо Glegoo не був основним */
+      /* Якщо ви мали на увазі інший шрифт, будь ласка, уточніть */
+    }
+
+    h1, h2 {
+      text-align: center;
+      font-size: 1.5rem; /* Повернуто початкове значення */
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      text-align: center;
+      font-family: 'PT Mono', monospace; /* Повернуто PT Mono */
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 55%; 
+      min-width: 500px; /* Повернуто початкове значення */
+      font-family: 'PT Mono', monospace; /* Повернуто PT Mono */
+      /* Видалено box-shadow, щоб не змінювати дизайн */
+    }
+
+    td {
+      border: 2px solid #444; /* Повернуто початковий колір рамки */
+      padding: 0.3rem 0.5rem; /* Повернуто початкові відступи */
+      background: #e5e1d6;
+      text-align: center;
+      vertical-align: middle;
+      min-width: 80px; /* Повернуто початкове значення */
+      height: 60px; /* Повернуто початкове значення */
+    }
+
+    /* Стилі для заголовків таблиці, щоб вони відповідали `td` за дизайном */
+    th {
+      border: 2px solid #444;
+      padding: 0.3rem 0.5rem;
+      background: #e5e1d6; /* Такий самий фон, як у td */
+      color: #222; /* Такий самий колір тексту, як у html */
+      text-align: center;
+      vertical-align: middle;
+      font-family: 'PT Mono', monospace; /* Повернуто PT Mono */
+      font-weight: bold; /* Жирний шрифт для заголовків */
+      font-size: 1.4rem; /* Збільшений розмір шрифту, щоб відповідати character */
+      letter-spacing: 2px; /* Повернуто початкове значення */
+      text-transform: uppercase;
+    }
+
+    /* Класи для сигналів та символів, повернуто як було */
+    .signal {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700; /* Встановлено 700 відповідно до @import */
+      font-size: 1.5rem;
+      color: #000;
+      letter-spacing: 3px;
+      line-height: 1.2;
+    }
+
+    .character {
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .combined-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+      height: 100%;
+    }
+
+    /* Адаптивні стилі */
+    @media (max-width: 768px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      table {
+        min-width: 300px; /* Повернуто початкове значення */
+        width: 100%; /* Додано, щоб таблиця займала всю ширину на малих екранах */
+      }
+      
+      th {
+        font-size: 1.1rem; /* Адаптовано для мобільних */
+        padding: 0.2rem 0.3rem;
+      }
+
+      td {
+        min-width: 60px; /* Повернуто початкове значення */
+        padding: 0.2rem 0.3rem;
+        height: 50px; /* Повернуто початкове значення */
+      }
+      
+      .signal {
+        font-size: 1.2rem;
+      }
+      
+      .character {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Український Алфавіт</h1>
+  <p>mykola.telychko@outlook.com</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><div class="combined-cell"><span class="signal"></span><span class="character">Літера</span></div></th>
+        <th><div class="combined-cell"><span class="signal"></span><span class="character">Слово</span></div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">А</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Анна</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Б</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Борис</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">В</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Василь</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Г</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Ганна</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ґ</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Ґанок <i>(рідко)</i></span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Д</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Дмитро</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Е</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Ехо</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Є</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Євген</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ж</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Жанна</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">З</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Зеновій</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">И</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Игнат</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">І</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Іван</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ї</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Їжак</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Й</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Йосип</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">К</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Костянтин</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Л</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Леонід</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">М</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Михайло</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Н</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Назар</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">О</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Олена</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">П</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Петро</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Р</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Роман</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">С</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Сергій</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Т</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Тарас</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">У</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Уляна</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ф</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Федір</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Х</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Харитон</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ц</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Цезар</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ч</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Чорний</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ш</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Шура</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Щ</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Щука</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ь</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">М’який знак</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Ю</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Юрій</span></div></td></tr>
+      <tr><td><div class="combined-cell"><span class="signal"></span><span class="character">Я</span></div></td><td><div class="combined-cell"><span class="signal"></span><span class="character">Яків</span></div></td></tr>
+    </tbody>
+  </table>
+</body>
+</html>

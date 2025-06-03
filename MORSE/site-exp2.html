@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+        /* ----------------- */
+        /* --- RESET --- */
+        /* ----------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ----------------- */
+        /* --- STRUCTURE --- */
+        /* ----------------- */
+
+        body { 
+            font-size: 16px; 
+            color: #686B5F; 
+            background-color: #DBDED3; 
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container { 
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .form { 
+            position: relative; 
+            width: 100%;
+            border: 2px solid #7E8272; 
+            background: #DBDED3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .row { 
+            display: flex; 
+            flex-wrap: wrap;
+        }
+        
+        .row.space-around { justify-content: space-around; }
+
+        .block { 
+            position: relative;
+            box-sizing: border-box;
+            min-height: 75px;
+            padding: 15px;
+            flex: 1;
+        }
+
+        /* Responsive width classes */
+        .block.third, .third { width: 33.33%; flex: 0 0 33.33%; }
+        .block.eighth { width: 12.5%; flex: 0 0 12.5%; }
+        .block.fourth { width: 25%; flex: 0 0 25%; }
+        .block.half { width: 50%; flex: 0 0 50%; }
+        .block.two-thirds { width: 66.66%; flex: 0 0 66.66%; }
+        .block.three-fourths { width: 75%; flex: 0 0 75%; }
+        .block.whole { width: 100%; flex: 0 0 100%; }
+
+        .checkbox-item.fourth { width: 25%; flex: 0 0 25%; }
+        .checkbox-item.half { width: 50%; flex: 0 0 50%; }
+
+        /* ------------------ */
+        /* --- TYPOGRAPHY --- */
+        /* ------------------ */
+
+        h1 { 
+            margin: 0; 
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: clamp(4px, 1vw, 8px);
+            text-align: center;
+        }
+
+        p { margin: 0; }
+
+        /* ------------------ */
+        /* --- DECORATION --- */
+        /* ------------------ */
+
+        /* BORDERS */
+        .b-top { border-top: 2px solid #7E8272; }
+        .b-left { border-left: 2px solid #7E8272; }
+        .b-bottom { border-bottom: 2px solid #7E8272; }
+        .b-right { border-right: 2px solid #7E8272; }
+
+        /* CIRCLES */
+        .circle {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background-color: #DBDED3;
+            border: 2px solid #7e8272;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .circle.top { top: -6px; }
+        .circle.left { left: -6px; }
+        .circle.bottom { bottom: -6px; }
+        .circle.right { right: -6px; }
+
+        /* --------------------- */
+        /* --- FORM ELEMENTS --- */
+        /* --------------------- */
+
+        input[type=text], textarea { 
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-family: 'Fira Mono', monospace;
+            background-color: #DBDED3;
+            border: none; 
+            transition: background-color 0.3s ease;
+        }
+
+        input[type=text]:focus, textarea:focus { 
+            outline: none;
+            background-color: #E5E8DD;
+        }
+
+        input[type=text]::placeholder, textarea::placeholder {
+            font-family: 'Fira Mono', monospace;
+            font-size: 16px;
+            color: #9A9D92;
+        }
+
+        /* LABELS */
+        label { 
+            margin: 0; 
+            padding: 0;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        label.tag {
+            position: absolute;
+            bottom: 0; 
+            left: 0;
+            padding: 5px 8px;
+            font-size: 12px;
+            color: #DBDED3;
+            background-color: #7E8272;
+            font-weight: 500;
+        }
+
+        /* CHECKBOXES */
+        input[type=checkbox] { 
+            width: 30px;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        input[type=checkbox] + label {
+            cursor: pointer;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        input[type=checkbox] + label:before {
+            content: '';
+            height: 20px; 
+            width: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            border: 2px solid #7E8272;
+            background: #DBDED3;
+            transition: all 0.3s ease;
+        }
+
+        input[type=checkbox]:checked + label:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #DBDED3;
+            background-color: #7E8272;
+        }
+
+        input[type=checkbox] + label:hover:before {
+            background-color: #E5E8DD;
+        }
+
+        /* ------------------- */
+        /* --- INDIVIDUALS --- */
+        /* ------------------- */
+
+        #if-you-can > div,
+        #if-you-wont > div { 
+            padding-top: 26px; 
+        }
+
+        /* STEP BY STEP (MOON) */
+        #moon-div ol {
+            height: auto;
+            min-height: 211px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            list-style: none;
+        }
+
+        #moon-div ol li { 
+            position: relative;
+            padding-left: 40px;
+            min-height: 50px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #moon-div ol li:before {
+            content: attr(number);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            color: #DBDED3;
+            background-color: #7E8272;
+            line-height: 30px;
+            border-radius: 50%;
+            font-weight: 600;
+        }
+
+        #moon-div ol li p { 
+            padding: 0;
+            margin: 0;
+        }
+
+        #moon-div-grid input[type=text] { 
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* ---------------------- */
+        /* --- RESPONSIVE DESIGN --- */
+        /* ---------------------- */
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                width: 100%;
+            }
+            
+            .block {
+                padding: 10px;
+                min-height: 60px;
+            }
+            
+            h1 {
+                font-size: clamp(20px, 5vw, 28px);
+                letter-spacing: clamp(2px, 1vw, 6px);
+            }
+            
+            /* Stack checkboxes vertically on smaller screens */
+            .checkbox-item.fourth {
+                width: 50%;
+                flex: 0 0 50%;
+            }
+            
+            .checkbox-item.half {
+                width: 100%;
+                flex: 0 0 100%;
+            }
+            
+            /* Adjust form sections for tablet */
+            .block.fourth {
+                width: 100%;
+                flex: 0 0 100%;
+                border-right: none !important;
+                border-bottom: 2px solid #7E8272;
+            }
+            
+            .block.three-fourths {
+                width: 100%;
+                flex: 0 0 100%;
+            }
+            
+            .block.two-thirds {
+                width: 100%;
+                flex: 0 0 100%;
+                border-right: none !important;
+                border-bottom: 2px solid #7E8272;
+            }
+            
+            .block.third {
+                width: 100%;
+                flex: 0 0 100%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .block {
+                padding: 8px;
+                min-height: 50px;
+            }
+            
+            h1 {
+                font-size: clamp(18px, 6vw, 24px);
+                letter-spacing: clamp(1px, 1vw, 4px);
+            }
+            
+            input[type=text], textarea {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            label {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+            
+            label.tag {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+            
+            /* Stack all elements vertically on mobile */
+            .checkbox-item.fourth,
+            .checkbox-item.half {
+                width: 100%;
+                flex: 0 0 100%;
+                margin-bottom: 10px;
+            }
+            
+            .block.eighth,
+            .block.fourth,
+            .block.half,
+            .block.third,
+            .block.two-thirds,
+            .block.three-fourths {
+                width: 100%;
+                flex: 0 0 100%;
+                border-right: none !important;
+            }
+            
+            .row:not(:last-child) .block:last-child {
+                border-bottom: 2px solid #7E8272;
+            }
+            
+            /* Adjust moon section for mobile */
+            #moon-div ol {
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+            
+            #moon-div ol li {
+                margin-bottom: 15px;
+                padding-left: 45px;
+            }
+            
+            #moon-div ol li:before {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+            }
+            
+            /* Grid adjustments for mobile */
+            #moon-div-grid .block.third {
+                width: 33.33%;
+                flex: 0 0 33.33%;
+            }
+            
+            .circle {
+                display: none;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 320px) {
+            #moon-div-grid .block.third {
+                width: 100%;
+                flex: 0 0 100%;
+                border-right: none !important;
+                border-bottom: 1px solid #7E8272;
+            }
+            
+            #moon-div-grid .row:last-child .block:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* Hover effects for desktop */
+        @media (min-width: 769px) {
+            .form {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .form:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+            
+            input[type=text]:hover, textarea:hover {
+                background-color: #E5E8DD;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="circle top left"></div>
+            <div class="circle top right"></div>
+            <div class="circle bottom left"></div>
+            <div class="circle bottom right"></div>
+            
+            <div class="block b-bottom">
+                <h1>АЗБУКА МОРЗЕ</h1>
+            </div>
+
+            <div class="block b-bottom">
+                <input type="text" maxlength="90" placeholder="field" />
+            </div>
+            <div class="block b-bottom">
+                <input type="text" maxlength="90" placeholder="The ancient art of origami" />
+            </div>
+              <div class="block b-bottom">
+                <input type="text" maxlength="90" placeholder="The ancient art of origami" />
+            </div>
+
+            <div id="if-you-can" class="row b-bottom">
+                <div class="block fourth b-right">
+                    <label for="">If You Can:</label>
+                </div>
+                <div class="block row three-fourths">
+                    <div class="checkbox-item fourth">
+                        <input type="checkbox" id="a-1" />
+                        <label for="a-1">FRANCE</label>
+                    </div>
+                    <div class="checkbox-item fourth">
+                        <input type="checkbox" id="a-2" />
+                        <label for="a-2">UKRAINE</label>
+                    </div>
+                    <div class="checkbox-item fourth">
+                        <input type="checkbox" id="a-3" />
+                        <label for="a-3">USA</label>
+                    </div>
+                    <div class="checkbox-item fourth">
+                        <input type="checkbox" id="a-4" />
+                        <label for="a-4">GB</label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="if-you-wont" class="row b-bottom">
+                <div class="block fourth b-right">
+                    <label for="">If You Won't:</label>
+                </div>
+                <div class="block row three-fourths">
+                    <div class="checkbox-item half">
+                        <input type="checkbox" id="b-1" />
+                        <label for="b-1">Stone</label>
+                    </div>
+                    <div class="checkbox-item half">
+                        <input type="checkbox" id="b-2" />
+                        <label for="b-2">Blood</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row b-bottom">
+                <div class="block three-fourths b-right">
+                    <label class="tag">Family</label>
+                    <input type="text" maxlength="60" placeholder="" />
+                </div>
+                <div class="block eighth b-right">
+                    <label class="tag">How</label>
+                    <input type="text" maxlength="2" class="center-text" placeholder="" />
+                </div>
+                <div class="block eighth">
+                    <label class="tag">Year</label>
+                    <input type="text" maxlength="4" class="center-text" placeholder="" />
+                </div>
+            </div>
+
+            <div class="row b-bottom">
+                <div class="block half b-right">
+                    <label class="tag">Address</label>
+                    <input type="text" maxlength="40" placeholder="" />
+                </div>
+                <div class="block fourth b-right">
+                    <label class="tag">XXX</label>
+                    <input type="text" maxlength="15" placeholder="" />
+                </div>
+                <div class="block fourth">
+                    <label class="tag">Grain</label>
+                    <input type="text" maxlength="15" placeholder="" />
+                </div>
+            </div>
+
+            <div class="row b-bottom" id="moon-div">
+                <div class="block two-thirds b-right">
+                    <ol>
+                        <li number="1">
+                            <p>Scry for mooncalves as night falls.</p>
+                        </li>
+                        <li number="2">
+                            <p>Reprint</p>
+                        </li>
+                        <li number="3">
+                            <p>Assign a warden</p>
+                        </li>
+                        <li number="4">
+                            <p>Scry for mooncalves as night falls.</p>
+                        </li>
+                        <li number="5">
+                            <p>Reprint</p>
+                        </li>
+                        <li number="6">
+                            <p>Assign a warden</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="third" id="moon-div-grid">
+                    <div class="whole row b-bottom">
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="a" />
+                        </div>
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="b" />
+                        </div>
+                        <div class="block third">
+                            <input type="text" maxlength="4" placeholder="c" />
+                        </div>
+                    </div>
+
+                    <div class="row b-bottom">
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="i" />
+                        </div>
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="ii" />
+                        </div>
+                        <div class="block third">
+                            <input type="text" maxlength="4" placeholder="iii" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="α" />
+                        </div>
+                        <div class="block third b-right">
+                            <input type="text" maxlength="4" placeholder="β" />
+                        </div>
+                        <div class="block third">
+                            <input type="text" maxlength="4" placeholder="γ" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add focus effects to inputs
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Add click effects to checkboxes
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const label = this.nextElementSibling;
+                    if (this.checked) {
+                        label.style.color = '#7E8272';
+                        label.style.fontWeight = '600';
+                    } else {
+                        label.style.color = '#686B5F';
+                        label.style.fontWeight = '400';
+                    }
+                });
+            });
+
+            // Add responsive behavior monitoring
+            window.addEventListener('resize', function() {
+                // You can add any resize-specific logic here
+                console.log('Window resized to:', window.innerWidth, 'x', window.innerHeight);
+            });
+        });
+    </script>
+</body>
+</html>
