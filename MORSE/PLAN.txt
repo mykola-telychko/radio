@@ -21,35 +21,32 @@ https://github.com/mykola-telychko/web-design-examples/blob/main/btns%20inputs/t
 range
 https://codepen.io/telychko-mykola/pen/myyxjgV
 
+table
 https://codepen.io/telychko-mykola/pen/gbbeawb
 
 markap newspaper
 https://codepen.io/telychko-mykola/pen/pvvLgzK
-
-site-example
-https://morsecode.world/international/translator.html
-
-converter
-https://charactercalculator.com/uk/morse-code-translator/
-
-https://naurok.com.ua/scenariy-diznaysya-svoe-im-ya-azbukoyu-morze-274742.html
 
 факти для статей 
 https://www.factday.net/7-11-cikave-pro-azbuku-morze-i-telegraf.html
 https://daytoday.ua/azbuka-morze-stara-ale-vse-shche-nadiyna/
 https://mors.in.ua/technology/3925-semuel-morze-tvorec-azbuky-morze.html
 https://uk.linuxadictos.com/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%B5-%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B4%D0%BB%D1%8F-%D0%B0%D0%B7%D0%B1%D1%83%D0%BA%D0%B8-%D0%9C%D0%BE%D1%80%D0%B7%D0%B5-%D0%B4%D0%B5%D1%8F%D0%BA%D1%96-%D0%B2%D0%B0%D1%80%D1%96%D0%B0%D0%BD%D1%82%D0%B8-%D0%B7-%D0%B2%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D0%B8%D0%BC-%D0%BA%D0%BE%D0%B4%D0%BE%D0%BC.html
+https://naurok.com.ua/scenariy-diznaysya-svoe-im-ya-azbukoyu-morze-274742.html
+theory 
+https://www.emissary.ai/telegraph-morse-code-text
+http://www.ngu.com.ua/learn/communication/azmorze.html#two
 
 Це може бути довільна тривалість, але вона має бути стала для передавача і приймача.
 Наприклад, 1 одиниця = 100 мс, тоді:
 Крапка = 100 мс
 Тире = 300 мс
 Проміжок між словами = 700 мс
-
 📻 У телеграфі зазвичай використовували 20–50 мс за одиницю.
-
 Набір устаткування для радіоаматорів. форуми морзе. борда про морзе. 
 
+top color MORSE-TRAINER
+https://codepen.io/skelet00r/pen/bGNQzzV
 
 detail morse 
 https://capitalizemytitle.com/morse-code-translator/
@@ -64,15 +61,14 @@ https://www.morsecode-translator.com/ru
 
 https://translatermorsecode.com/baudot-code/
 
+site-example
+https://morsecode.world/international/translator.html
+
+converter
+https://charactercalculator.com/uk/morse-code-translator/
+
 // light morse 
 https://codepen.io/merrybottle/pen/wxPyxz
-
-top color 
-https://codepen.io/skelet00r/pen/bGNQzzV
-
-theory 
-https://www.emissary.ai/telegraph-morse-code-text
-http://www.ngu.com.ua/learn/communication/azmorze.html#two
 
 premium
 https://kidskonnect.com/science/morse-code/
