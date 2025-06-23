@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бездротові протоколи</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+        .civil {
+            border-left: 4px solid #2ecc71;
+        }
+        .military {
+            border-left: 4px solid #e74c3c;
+        }
+        .type {
+            font-weight: bold;
+        }
+        .civil-type {
+            color: #2ecc71;
+        }
+        .military-type {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Бездротові протоколи: військові та цивільні</h1>
+
+    <h2>📡 Цивільні бездротові протоколи</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Назва</th>
+                <th>Тип</th>
+                <th>Призначення</th>
+                <th>Частота</th>
+                <th>Дальність</th>
+                <th>Швидкість</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="civil">
+                <td>Wi-Fi (IEEE 802.11)</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Передача даних у локальних мережах</td>
+                <td>2.4 ГГц, 5 ГГц, 6 ГГц</td>
+                <td>до 100 м</td>
+                <td>до 10 Гбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>Bluetooth (IEEE 802.15.1)</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Короткодістанційний зв'язок</td>
+                <td>2.4 ГГц</td>
+                <td>до 100 м</td>
+                <td>до 2 Мбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>Zigbee (IEEE 802.15.4)</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>IoT (розумний дім, датчики)</td>
+                <td>2.4 ГГц, 915 МГц, 868 МГц</td>
+                <td>до 100 м</td>
+                <td>250 кбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>LoRaWAN</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Довгодістанційні IoT-мережі</td>
+                <td>868 МГц, 915 МГц</td>
+                <td>до 15 км</td>
+                <td>50 кбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>NFC</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Безконтактні платежі</td>
+                <td>13.56 МГц</td>
+                <td>до 10 см</td>
+                <td>424 кбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>4G/5G (LTE, NR)</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Мобільний інтернет</td>
+                <td>Різні смуги</td>
+                <td>до кількох км</td>
+                <td>до 10 Гбіт/с</td>
+            </tr>
+            <tr class="civil">
+                <td>RFID</td>
+                <td class="type civil-type">Цивільний</td>
+                <td>Ідентифікація об'єктів</td>
+                <td>Різні частоти</td>
+                <td>до 100 м (активні)</td>
+                <td>Залежить від типу</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🛡️ Військові бездротові протоколи</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Назва</th>
+                <th>Тип</th>
+                <th>Призначення</th>
+                <th>Частота</th>
+                <th>Дальність</th>
+                <th>Особливості</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="military">
+                <td>HAVE QUICK / SATURN</td>
+                <td class="type military-type">Військовий</td>
+                <td>Радіозв'язок у авіації</td>
+                <td>225-400 МГц</td>
+                <td>Залежить від системи</td>
+                <td>Частотні стрибки, шифрування</td>
+            </tr>
+            <tr class="military">
+                <td>SINCGARS</td>
+                <td class="type military-type">Військовий</td>
+                <td>Тактична радіомережа</td>
+                <td>30-88 МГц</td>
+                <td>до 40 км</td>
+                <td>FHSS (Frequency Hopping)</td>
+            </tr>
+            <tr class="military">
+                <td>Link 16 (TADIL-J)</td>
+                <td class="type military-type">Військовий</td>
+                <td>Обмін даними НАТО</td>
+                <td>960-1215 МГц</td>
+                <td>до 500 км</td>
+                <td>TDMA + шифрування</td>
+            </tr>
+            <tr class="military">
+                <td>KY-57 / VINSON</td>
+                <td class="type military-type">Військовий</td>
+                <td>Голосове шифрування</td>
+                <td>Різні частоти</td>
+                <td>Залежить від радіо</td>
+                <td>Криптозахист</td>
+            </tr>
+            <tr class="military">
+                <td>FREQUENCY HOPPING (FHSS)</td>
+                <td class="type military-type">Військовий</td>
+                <td>Протидія РЕБ</td>
+                <td>Різні частоти</td>
+                <td>Залежить від системи</td>
+                <td>Антиглушіння</td>
+            </tr>
+            <tr class="military">
+                <td>AES-256 / Type 1 Encryption</td>
+                <td class="type military-type">Військовий</td>
+                <td>Криптозахист даних</td>
+                <td>-</td>
+                <td>-</td>
+                <td>NSA-сертифікований</td>
+            </tr>
+            <tr class="military">
+                <td>TETRA</td>
+                <td class="type military-type">Військовий</td>
+                <td>Захищений зв'язок</td>
+                <td>380-400 МГц</td>
+                <td>до 50 км</td>
+                <td>Груповий зв'язок</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
