@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Diagram Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        .mermaid {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+        graph LR
+            A[НЧ сигнал] --> B[Модулятор]
+            C[Генератор ВЧ] --> B --> D[Підсилювач потужності]
+            D --> E[Антена]
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true
+        });
+    </script>
+</body>
+</html>
