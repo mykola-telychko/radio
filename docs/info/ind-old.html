@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Радіозв'язок</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-size:16px;color:#000000;background:#DBDED3;min-height:100vh;padding:10px;font-family:'PT Mono',monospace;}
+        .container{width:100%;max-width:1200px;margin:0 auto;}
+        .form{position:relative;width:100%;border:2px solid #7E8272;background:#DBDED3;box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:15px;}
+        .circle{width:10px;height:10px;position:absolute;background:#DBDED3;border:2px solid #7e8272;border-radius:50%;z-index:10;}
+        .circle.top{top:-6px;}.circle.left{left:-6px;}.circle.bottom{bottom:-6px;}.circle.right{right:-6px;}
+        h1{font-size:clamp(20px,4vw,32px);font-weight:700;text-transform:uppercase;letter-spacing:clamp(2px,1vw,8px);text-align:center;margin-bottom:15px;color:#000000;}
+        h2{font-size:clamp(18px,3vw,24px);font-weight:600;margin:15px 0 10px;color:#000000;}
+        p{font-size:14px;line-height:1.5;margin-bottom:12px;color:#000000;}
+        ul{margin-left:15px;margin-bottom:12px;color:#000000;}
+        a{color:#000000;text-decoration:underline;}
+
+        /* Navigation Bar Styles */
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            position: relative;
+            border: 2px solid #7E8272;
+            background: #DBDED3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #000;
+            padding: 5px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-title {
+            color: #000000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: auto; /* Вирівнює по лівому краю */
+            padding: 0.3rem;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #000000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            position: relative;
+            padding: 0.3rem;
+            white-space: nowrap;
+        }
+
+        .nav a:hover:before,
+        .nav a:hover:after {
+            content: '[';
+            position: absolute;
+            opacity: 1;
+        }
+
+        .nav a:hover:before {
+            left: -3px;
+        }
+
+        .nav a:hover:after {
+            content: ']';
+            right: -3px;
+        }
+
+        .nav-circle {
+            width:8px;
+            height:8px;
+            position:absolute;
+            background:#DBDED3;
+            border:2px solid #7e8272;
+            border-radius:50%;
+            z-index:10;
+        }
+        .nav-circle.top{top:-5px;}
+        .nav-circle.left{left:-5px;}
+        .nav-circle.bottom{bottom:-5px;}
+        .nav-circle.right{right:-5px;}
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                margin: 0 auto;
+            }
+            
+            .nav {
+                display: none;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 10px 0;
+            }
+            
+            .nav.active {
+                display: flex;
+            }
+            
+            .nav-title {
+                margin-right: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            
+            .nav a {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                text-align: center;
+                white-space: normal;
+            }
+            
+            .form {
+                padding: 10px;
+            }
+            
+            h1 {
+                margin-bottom: 10px;
+            }
+            
+            h2 {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav a {
+                font-size: 0.8rem;
+                padding: 0.3rem;
+            }
+            
+            p, ul {
+                font-size: 13px;
+            }
+        }
+
+        /* footer---- */
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto 0;
+            position: relative;
+            border: 2px solid #7E8272;
+            background: #DBDED3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            font-family: 'PT Mono', monospace;
+        }
+        
+        .footer-circle {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background: #DBDED3;
+            border: 2px solid #7e8272;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .footer-circle.top { top: -6px; }
+        .footer-circle.left { left: -6px; }
+        .footer-circle.bottom { bottom: -6px; }
+        .footer-circle.right { right: -6px; }
+        
+        footer h3 {
+            font-size: clamp(12px, 2vw, 14px);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            color: #000000;
+        }
+        
+        footer a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                padding: 10px;
+                margin-top: 20px;
+            }
+        }
+
+        /* Responsive image */    
+.image-wrapper {
+  max-width: 1200px; /* Максимальна ширина контейнера */
+  margin: 0 auto;    /* Центрування */
+  padding: 10px;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Оптимізація для мобільних */
+@media (max-width: 768px) {
+  .image-wrapper {
+    padding: 5px;
+  }
+  .responsive-img {
+    border-radius: 4px;
+  }
+}
+    </style>
+</head>
+<body>
+<div class="nav-container">
+    <!-- <div class="nav-circle top left"></div>
+    <div class="nav-circle top right"></div>
+    <div class="nav-circle bottom left"></div>
+    <div class="nav-circle bottom right"></div> -->
+
+    <div class="circle top left"></div>
+    <div class="circle top right"></div>
+    <div class="circle bottom left"></div>
+    <div class="circle bottom right"></div>
+    <button class="mobile-menu-btn">☰ МЕНЮ</button>
+    <nav class="nav" id="mainNav">
+        <div class="nav-title"><a href="#">РАДІОЗВʼЯЗОК</a></div>
+        <div class="nav-links">
+            <!-- <a href="#">Головна</a> -->
+            <a href="#">Статті</a>
+            <a href="#">Навчання</a>
+            <a href="#">Технології</a>
+            <a href="#">Ресурси</a>
+            <a href="#">Про нас</a>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="form">
+        <div class="circle top left"></div>
+        <div class="circle top right"></div>
+        <div class="circle bottom left"></div>
+        <div class="circle bottom right"></div>
+        <h1>Що таке Радіозвязок</h1>
+
+        <!-- <h2>Підготовка фахівців</h2> -->
+        <!-- <p><strong>Військові ВНЗ</strong>:</p> -->
+
+        Радіозв’язок — це процес передачі інформації через електромагнітні хвилі в радіочастотному діапазоні. Нижче описано повний цикл роботи радіозв’язку, включаючи виникнення сигналу, його обробку, передачу, прийом та відтворення звуку.
+
+1. Виникнення сигналу
+Радіозв’язок починається з перетворення інформації (наприклад, голосу, музики чи даних) в електричний сигнал. Це відбувається так:
+•  Джерело інформації: Наприклад, мікрофон перетворює звукові коливання (голос) в електричний сигнал. Звукові хвилі викликають вібрацію мембрани мікрофона, яка генерує змінний електричний струм, що відповідає амплітуді та частоті звуку.
+•  Модуляція: Щоб передати цей сигнал на великі відстані, його накладають на високочастотний сигнал-носій. Це називається модуляцією. Існують основні типи модуляції:
+	•  Амплітудна модуляція (AM): Амплітуда носійного сигналу змінюється відповідно до інформаційного сигналу.
+	•  Частотна модуляція (FM): Частота носійного сигналу змінюється відповідно до інформаційного сигналу.
+	•  Фазова модуляція (PM) та інші цифрові види модуляції (наприклад, QAM) для даних.
+Цей модульований сигнал готовий до передачі.
+
+
+<div class="image-wrapper">
+  <img
+    src="../info/radio-loop.jpg"
+    alt="Приклад адаптивного зображення"
+  
+    class="responsive-img"
+  >
+    <!-- loading="lazy"   -->
+</div>
+
+2. Роль антени в передачі сигналу
+Антена є ключовим елементом радіозв’язку, оскільки вона перетворює електричний сигнал у електромагнітні хвилі та навпаки.
+•  Передача сигналу:
+	•  Модульований електричний сигнал подається на передаючу антену через передавач (трансмітер).
+	•  Антена — це провідник, який резонує на певній частоті. Електричний струм, що проходить через антену, створює змінне електромагнітне поле, яке випромінюється у вигляді радіохвиль.
+	•  Форма, розмір і конструкція антени визначають її ефективність і спрямованість. Наприклад, дипольна антена випромінює сигнал у всіх напрямках, тоді як спрямована антена (як Yagi) фокусує енергію в одному напрямку.
+	•  Частота сигналу має відповідати резонансній частоті антени, щоб забезпечити максимальну ефективність.
+•  Типи антен:
+	•  Дипольні антени (прості, для радіомовлення).
+	•  Спрямовані антени (для точкового зв’язку).
+	•  Параболічні антени (для супутникового зв’язку).
+
+3. Робота передавача (трансмітера)
+Передавач формує та підсилює сигнал для передачі через антену:
+1.  Генерація носійного сигналу:
+	•  Осцилятор (наприклад, кварцовий) генерує стабільний високочастотний сигнал (носій).
+2.  Модуляція:
+	•  Інформаційний сигнал (з мікрофона чи іншого джерела) накладається на носій за допомогою модулятора.
+3.  Підсилення:
+	•  Підсилювач потужності (зазвичай транзисторний або ламповий) підвищує амплітуду сигналу, щоб він міг бути переданий на велику відстань.
+4.  Фільтрація:
+	•  Фільтри усувають небажані гармоніки чи шум, щоб сигнал відповідав стандартам частотного діапазону.
+5.  Передача в антену:
+	•  Підсилений модульований сигнал подається на антену, яка перетворює його в електромагнітні хвилі.
+
+4. Поширення радіохвиль
+•  Після випромінювання антеною радіохвилі поширюються в просторі зі швидкістю світла (близько 300,000 км/с).
+•  Вони можуть:
+	•  Поширюватися прямою видимістю (наприклад, у VHF/UHF діапазонах).
+	•  Відбиватися від іоносфери (у HF діапазоні, для далекого зв’язку).
+	•  Огинати перешкоди або зазнавати дифракції, залежно від частоти.
+•  На якість сигналу впливають:
+	•  Перешкоди (шум від інших пристроїв, природні явища).
+	•  Затухання (через відстань, перешкоди, атмосферні умови).
+	•  Інтерференція (взаємодія хвиль).
+
+5. Прийом сигналу антеною
+•  Приймальна антена:
+	•  Антена приймача вловлює електромагнітні хвилі, які індукують у ній слабкий електричний струм.
+	•  Антена має бути налаштована на частоту сигналу для ефективного прийому (резонанс).
+	•  Конструкція антени (довжина, форма) залежить від діапазону частот (наприклад, для FM-радіо — 88-108 МГц).
+
+6. Обробка сигналу в радіоприймачі
+Радіоприймач обробляє вхідний сигнал, щоб виділити з нього інформацію (наприклад, звук). У простих приймачах (як AM/FM радіо) цей процес виглядає так:
+1.  Підсилення вхідного сигналу:
+	•  Слабкий сигнал від антени підсилюється за допомогою високочастотного підсилювача (RF-підсилювач), щоб зменшити вплив шумів.
+2.  Налаштування на частоту:
+	•  Тюнер (змінний конденсатор або електронний контур) вибирає потрібну частоту сигналу, відфільтровуючи інші.
+	•  У супергетеродинних приймачах (найпоширеніший тип) сигнал змішується з сигналом від локального осцилятора, щоб отримати проміжну частоту (IF), яка легше обробляється.
+3.  Фільтрація:
+	•  Фільтри проміжної частоти усувають небажані сигнали та шум, залишаючи лише потрібний сигнал.
+4.  Демодуляція:
+	•  Демодулятор витягує інформаційний сигнал із модульованого носія:
+		•  Для AM: детектор амплітуди (наприклад, діодний) виділяє низькочастотний звуковий сигнал.
+		•  Для FM: частотний детектор (наприклад, фазовий дискримінатор) відновлює сигнал, аналізуючи зміни частоти.
+	•  На виході демодулятора отримуємо аналоговий звуковий сигнал.
+5.  Підсилення звуку:
+	•  Низькочастотний підсилювач (аудіопідсилювач) підвищує потужність сигналу, щоб він міг керувати динаміком.
+	•  Динамік перетворює електричний сигнал назад у звукові коливання, які чує людина.
+
+7. Робота простих радіоприймачів
+Прості радіоприймачі (наприклад, кристадин або детекторний приймач) мають спрощену конструкцію:
+•  Детекторний приймач:
+	•  Складається з антени, контуру (котушка + конденсатор) для вибору частоти, діода (або кристала) для демодуляції та навушників.
+	•  Не потребує зовнішнього живлення, оскільки сигнал від антени достатньо сильний для роботи навушників.
+	•  Використовується лише для AM-сигналів, оскільки FM складніше демодулювати без підсилення.
+•  Супергетеродинний приймач:
+	•  Сучасніший, використовує проміжну частоту для кращої селективності та чутливості.
+	•  Широко застосовується в AM/FM радіо, телевізорах і сучасних комунікаційних системах.
+
+8. Роль антен у приймачі та передавачі
+•  У передавачі: Антена оптимізує випромінювання енергії, спрямовуючи її в потрібному напрямку. Ефективність залежить від узгодження антени з частотою сигналу та опором передавача.
+•  У приймачі: Антена вловлює максимальну кількість енергії від радіохвиль, щоб сигнал був достатньо сильним для обробки. Важливо, щоб антена мала правильну довжину (зазвичай кратну довжині хвилі, наприклад, λ/4 або λ/2).
+
+9. Додаткові аспекти
+•  Шуми та перешкоди: Радіоприймачі борються з шумами (атмосферними, тепловими, від інших пристроїв) за допомогою фільтрів і підсилювачів із низьким рівнем шуму.
+•  Цифровий радіозв’язок: У сучасних системах (наприклад, DAB, SDR) сигнал оцифровується, обробляється процесорами, що забезпечує кращу якість і стійкість до перешкод.
+•  Двосторонній зв’язок: У системах типу рації (walkie-talkie) один пристрій поєднує передавач і приймач (трансивер), що дозволяє як передавати, так і приймати сигнали.
+
+Схематичний цикл радіозв’язку
+1.  Звук → Мікрофон → Електричний сигнал.
+2.  Сигнал модулюється на носій → Підсилюється → Подається на антену.
+3.  Антена випромінює радіохвилі.
+4.  Радіохвилі поширюються в просторі.
+5.  Приймальна антена вловлює сигнал.
+6.  Приймач підсилює, фільтрує, демодулює сигнал.
+7.  Сигнал перетворюється в звук через динамік.
+
+
+        <h2>Висновок</h2>
+        <p>Фраку.</p>
+    </div>
+</div>
+  
+<footer>
+    <div class="footer-circle top left"></div>
+    <div class="footer-circle top right"></div>
+    <div class="footer-circle bottom left"></div>
+    <div class="footer-circle bottom right"></div>
+    <h3>© 2025 | Всі права захищені | <a href="mailto:mykola.telychko@outlook.com">mykola.telychko@outlook.com</a></h3>
+</footer>
+
+<script>
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+        document.getElementById('mainNav').classList.toggle('active');
+    });
+</script>
+</body>
+</html>
