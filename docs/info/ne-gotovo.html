@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Сторінку не знайдено</title>
+  <title>Розділ у розробці</title>
   <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'PT Mono', monospace;
       font-size: 16px;
@@ -24,7 +29,7 @@
       margin: auto;
       border: 2px solid #7E8272;
       background: #DBDED3;
-      padding: 20px;
+      padding: 40px 40px; /* Тепер 40px зверху-знизу і 40px зліва-справа */
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       position: relative;
       text-align: center;
@@ -39,10 +44,10 @@
       position: absolute;
     }
 
-    .top.left { top: -6px; left: -6px; }
-    .top.right { top: -6px; right: -6px; }
+    .top.left    { top: -6px; left: -6px; }
+    .top.right   { top: -6px; right: -6px; }
     .bottom.left { bottom: -6px; left: -6px; }
-    .bottom.right { bottom: -6px; right: -6px; }
+    .bottom.right{ bottom: -6px; right: -6px; }
 
     h1 {
       font-size: clamp(32px, 6vw, 64px);
@@ -54,6 +59,7 @@
     p {
       font-size: 16px;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     a {
@@ -83,9 +89,9 @@
       position: absolute;
     }
 
-    .footer-circle.top.left { top: -6px; left: -6px; }
-    .footer-circle.top.right { top: -6px; right: -6px; }
-    .footer-circle.bottom.left { bottom: -6px; left: -6px; }
+    .footer-circle.top.left     { top: -6px; left: -6px; }
+    .footer-circle.top.right    { top: -6px; right: -6px; }
+    .footer-circle.bottom.left  { bottom: -6px; left: -6px; }
     .footer-circle.bottom.right { bottom: -6px; right: -6px; }
 
     footer h3 {
@@ -103,18 +109,10 @@
     <div class="circle bottom left"></div>
     <div class="circle bottom right"></div>
 
-    <h1>404</h1>
-    <p>Cторінку не знайдено.</p>
+    <p>Цей розділ ще не готовий.</p>
+    <p>Будь ласка, зайдіть пізніше.</p>
     <p><a href="index.html">Повернутися на головну</a></p>
   </div>
-
-  <!-- <footer>
-    <div class="footer-circle top left"></div>
-    <div class="footer-circle top right"></div>
-    <div class="footer-circle bottom left"></div>
-    <div class="footer-circle bottom right"></div>
-    <h3>© 2025 | Всі права захищені | <a href="mailto:radio@example.com">radio@example.com</a></h3>
-  </footer> -->
 
 </body>
 </html>
