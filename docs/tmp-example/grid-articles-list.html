@@ -207,26 +207,115 @@
             margin: 0;
             color: #000000;
         }
-        
         footer a {
             color: #000000;
             text-decoration: underline;
         }
-        
         @media (max-width: 768px) {
             footer {
                 padding: 10px;
                 margin-top: 20px;
             }
         }
+        /* Responsive image */    
+.image-wrapper {
+  max-width: 1200px; /* Максимальна ширина контейнера */
+  margin: 0 auto;    /* Центрування */
+  padding: 10px;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Оптимізація для мобільних */
+@media (max-width: 768px) {
+  .image-wrapper {
+    padding: 5px;
+  }
+  .responsive-img {
+    border-radius: 4px;
+  }
+}
+      
+      
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed; /* Додано для однакової ширини стовпців */
+    }
+
+    th, td {
+      border: 2px solid #7E8272;
+      padding: 15px;
+      text-align: left;
+      background: #DBDED3;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 25%; /* Додано для однакової ширини стовпців */
+    }
+
+    th {
+      background-color: #DBDED3;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #7E8272;
+      padding: 5px 10px;
+    }
+      
+      td {
+  position: relative; /* Додано */
+  border: 2px solid #7E8272;
+  padding: 15px;
+  text-align: left;
+  background: #DBDED3;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 25%;
+  vertical-align: top; /* Гарантує вирівнювання тексту зверху */
+}
+
+.read-more {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #7E8272;
+  padding: 5px 10px;
+  
+  position: absolute;  /* Зафіксована позиція */
+  right: 10px;         /* Відступ справа */
+  bottom: 10px;        /* Відступ знизу */
+}
     </style>
 </head>
 <body>
 <div class="nav-container">
-    <div class="nav-circle top left"></div>
-    <div class="nav-circle top right"></div>
-    <div class="nav-circle bottom left"></div>
-    <div class="nav-circle bottom right"></div>
+    <div class="circle top left"></div>
+    <div class="circle top right"></div>
+    <div class="circle bottom left"></div>
+    <div class="circle bottom right"></div>
     <button class="mobile-menu-btn">☰ МЕНЮ</button>
     <nav class="nav" id="mainNav">
         <div class="nav-title"><a href="#">РАДІОЗВʼЯЗОК</a></div>
@@ -241,27 +330,58 @@
     </nav>
 </div>
 
-<div class="container">
-    <div class="form">
-        <div class="circle top left"></div>
-        <div class="circle top right"></div>
-        <div class="circle bottom left"></div>
-        <div class="circle bottom right"></div>
-        <h1>Підготовка спеціалістів з радіозв'язку у Франції</h1>
-
-        <h2>Підготовка фахівців</h2>
-
-        <p><strong>Військові ВНЗ</strong>:</p>
-        <p><strong>1) École des transmissions (ETRS)</strong> 
-            Військова школа при Силах наземного радіозв'язку – військова школа, що спеціалізується на 
-            підготовці військових та цивільних у сферах радіозв'язку (СІК), 
-            кібербезпеки, та електронної боротьби. Навчає приблизно 300 осіб щороку, 
-            включаючи майстер-класи, практикуми та курси за ступенями і технікою радіозв'язку.</p>
-
-        <h2>Висновок</h2>
-        <p>Франція має глибоко розвинену систему військової та цивільної підготовки фахівців з радіозв'язку. Від престижних технічних вишів до спеціалізованих військових шкіл – навчання поєднує теорію, практику та інженерну культуру. Виробничий сектор охоплює як оборонну, так і комерційну радіотехніку.</p>
-    </div>
-</div>
+  <div class="container">
+    <table>
+       <div class="footer-circle top left"></div>
+    <div class="footer-circle top right"></div>
+    <div class="footer-circle bottom left"></div>
+    <div class="footer-circle bottom right"></div>
+      <tr>
+        <td>
+          <h3>Історія радіозв'язку</h3>
+          <p>Відкриття радіохвиль та їх використання для передачі інформації на відстань.</p>
+          <a href="#" class="read-more">Читати далі</a>
+        </td>
+        <td>
+          <h3>Види радіозв'язку</h3>
+          <p>Короткохвильовий, ультракороткохвильовий, супутниковий та інші види радіозв'язку.</p>
+          <a href="#" class="read-more">Читати далі</a>
+        </td>
+        <td>
+          <h3>Аматорський радіозв'язок</h3>
+          <p>Як стати радіоаматором та що для цього потрібно.</p>
+          <a href="#" class="read-more">Читати далі</a>
+        </td>
+        <td>
+          <h3>Радіочастотний спектр</h3>
+          <p>Розподіл частот та їх використання в різних сферах.</p>
+          <a href="#" class="read-more">Читати далі</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Антени для радіозв'язку</h3>
+          <p>Типи антен та їх характеристики для різних діапазонів.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Цифровий радіозв'язок</h3>
+          <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіозв'язок у війську</h3>
+          <p>Використання радіозв'язку у військових цілях та особливості.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіоаматорські коди</h3>
+          <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+      </tr>
+    </table>
+  </div>
   
 <footer>
     <div class="footer-circle top left"></div>
