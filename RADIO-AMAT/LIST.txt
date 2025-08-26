@@ -1,3 +1,6 @@
+Фідери - передаючі лінії
+Осцилограф - аналізатор сигналів. Візуалізація сигналу
+
 https://www.radiomuseum.org/r/marconi_spy_radio_set_type_3_mk_ii_b2.html
 
 КПІ РЕБ 
@@ -12,3 +15,8 @@ https://www.youtube.com/watch?v=DnyoiEy5Yeg
 
 як підібрати антену з LiteVNA - спектроаналізатор SA6
 https://www.youtube.com/watch?v=MDoTq6EfgVU
+
+Українські рації Himera завдяки mesh-режиму забезпечили військовим зв'язок на 45 км
+https://mezha.media/oboronka/raciji-himera-b-yut-na-45-km-304267/
+
+https://militarnyi.com/uk/news/u-kaliningradi-buduyut-velycheznyj-antennyj-kompleks-kotryj-bude-stezhyty-za-nato/
