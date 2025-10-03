@@ -6,9 +6,8 @@
     <title>Радіозв'язок</title>
     <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
+  *{margin:0;padding:0;box-sizing:border-box;}
         body{font-size:16px;color:#000000;background:#DBDED3;min-height:100vh;padding:10px;font-family:'PT Mono',monospace;}
         .container{width:100%;max-width:1200px;margin:0 auto;}
         .form{position:relative;width:100%;border:2px solid #7E8272;background:#DBDED3;box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:15px;}
@@ -40,8 +39,6 @@
             cursor: pointer;
             color: #000;
             padding: 5px;
-            width: 100%;
-            text-align: center;
         }
 
         .nav {
@@ -58,7 +55,7 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
             font-weight: bold;
-            margin-right: auto;
+            margin-right: auto; /* Вирівнює по лівому краю */
             padding: 0.3rem;
             white-space: nowrap;
         }
@@ -90,12 +87,10 @@
         .nav a:hover:before {
             left: -3px;
         }
-
         .nav a:hover:after {
             content: ']';
             right: -3px;
         }
-
         .nav-circle {
             width:8px;
             height:8px;
@@ -110,146 +105,6 @@
         .nav-circle.bottom{bottom:-5px;}
         .nav-circle.right{right:-5px;}
 
-        /* Table Styles - Desktop */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-            min-width: 800px; /* Мінімальна ширина для скролу на малих екранах */
-        }
-
-        th, td {
-            border: 2px solid #7E8272;
-            padding: 15px;
-            text-align: left;
-            background: #DBDED3;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 25%;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: #DBDED3;
-        }
-
-        h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            display: inline-block;
-            font-size: 12px;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: 1px solid #7E8272;
-            padding: 5px 10px;
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-        }
-
-        /* Mobile Cards - замість таблиці на малих екранах */
-        .mobile-cards {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            position: relative;
-            border: 2px solid #7E8272;
-            background: #DBDED3;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 15px;
-            margin-bottom: 10px;
-        }
-
-        .card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .card p {
-            font-size: 14px;
-            margin-bottom: 40px; /* Місце для кнопки */
-        }
-
-        .card .read-more {
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-        }
-
-        /* footer---- */
-        footer {
-            width: 100%;
-            max-width: 1200px;
-            margin: 30px auto 0;
-            position: relative;
-            border: 2px solid #7E8272;
-            background: #DBDED3;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 15px;
-            text-align: center;
-            font-family: 'PT Mono', monospace;
-        }
-        
-        .footer-circle {
-            width: 10px;
-            height: 10px;
-            position: absolute;
-            background: #DBDED3;
-            border: 2px solid #7e8272;
-            border-radius: 50%;
-            z-index: 10;
-        }
-        .footer-circle.top { top: -6px; }
-        .footer-circle.left { left: -6px; }
-        .footer-circle.bottom { bottom: -6px; }
-        .footer-circle.right { right: -6px; }
-        
-        footer h3 {
-            font-size: clamp(12px, 2vw, 14px);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
-            color: #000000;
-        }
-        footer a {
-            color: #000000;
-            text-decoration: underline;
-        }
-
-        /* Responsive image */    
-        .image-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-
-        .responsive-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
         /* Mobile styles */
         @media (max-width: 768px) {
             body {
@@ -258,6 +113,7 @@
             
             .mobile-menu-btn {
                 display: block;
+                margin: 0 auto;
             }
             
             .nav {
@@ -301,21 +157,6 @@
             h2 {
                 margin: 10px 0;
             }
-            
-            /* Приховуємо таблицю на мобільних */
-            .table-container {
-                display: none;
-            }
-            
-            /* Показуємо картки на мобільних */
-            .mobile-cards {
-                display: flex;
-            }
-            
-            footer {
-                padding: 10px;
-                margin-top: 20px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -327,19 +168,133 @@
             p, ul {
                 font-size: 13px;
             }
-            
-            .card {
+        }
+
+        /* footer---- */
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto 0;
+            position: relative;
+            border: 2px solid #7E8272;
+            background: #DBDED3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 15px;
+            text-align: center;
+            font-family: 'PT Mono', monospace;
+        }
+        
+        .footer-circle {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background: #DBDED3;
+            border: 2px solid #7e8272;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .footer-circle.top { top: -6px; }
+        .footer-circle.left { left: -6px; }
+        .footer-circle.bottom { bottom: -6px; }
+        .footer-circle.right { right: -6px; }
+        
+        footer h3 {
+            font-size: clamp(12px, 2vw, 14px);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            color: #000000;
+        }
+        footer a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            footer {
                 padding: 10px;
-            }
-            
-            .card h3 {
-                font-size: 16px;
-            }
-            
-            .card p {
-                font-size: 13px;
+                margin-top: 20px;
             }
         }
+        /* Responsive image */    
+.image-wrapper {
+  max-width: 1200px; /* Максимальна ширина контейнера */
+  margin: 0 auto;    /* Центрування */
+  padding: 10px;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Оптимізація для мобільних */
+@media (max-width: 768px) {
+  .image-wrapper {
+    padding: 5px;
+  }
+  .responsive-img {
+    border-radius: 4px;
+  }
+}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed; /* Додано для однакової ширини стовпців */
+    }
+
+    th, td {
+      border: 2px solid #7E8272;
+      padding: 15px;
+      text-align: left;
+      background: #DBDED3;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 25%; /* Додано для однакової ширини стовпців */
+    }
+
+    th {
+      background-color: #DBDED3;
+    }
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .read-more {
+      display: inline-block;
+      font-size: 12px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid #7E8272;
+      padding: 5px 10px;
+    }
+td {
+  position: relative; /* Додано */
+  border: 2px solid #7E8272;
+  padding: 15px;
+  text-align: left;
+  background: #DBDED3;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 25%;
+  vertical-align: top; /* Гарантує вирівнювання тексту зверху */
+}
+.read-more {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #7E8272;
+  padding: 5px 10px;
+  position: absolute;  /* Зафіксована позиція */
+  right: 10px;         /* Відступ справа */
+  bottom: 10px;        /* Відступ знизу */
+}
+
     </style>
 </head>
 <body>
@@ -352,6 +307,7 @@
     <nav class="nav" id="mainNav">
         <div class="nav-title"><a href="index.html">РАДІОЗВʼЯЗОК</a></div>
         <div class="nav-links">
+            <!-- <a href="#">Головна</a> -->
             <a href="statti.html">Статті</a>
             <a href="ne-gotovo.html">Навчання</a>
             <a href="ne-gotovo.html">Технології</a>
@@ -362,185 +318,101 @@
 </div>
 
 <div class="container">
-    <!-- Таблиця для десктопу -->
-    <div class="table-container">
-        <table>
-            <tr>
-                <td>
-                    <h3>Історія радіозв'язку ч.1</h3>
-                    <p>Відкриття радіохвиль, періоди розвитку, еволюція радіотехніки</p>
-                    <a href="istoria-radiozviazky.html" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Історія радіозв'язку ч.2</h3>
-                    <p>Короткохвильовий, ультракороткохвильовий, супутниковий та інші види радіозв'язку.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Що таке радіолокація</h3>
-                    <p>Історія та основи радіолокації. Фізичні основи та устаткування</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіочастотний спектр</h3>
-                    <p>Розподіл частот та їх використання в різних сферах.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h3>Антени класифікація</h3>
-                    <p>Типи антен та їх характеристики для різних діапазонів.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Фізичні основи, одиниці вимірювання</h3>
-                    <p>Базові фізичні поняття пов'язані з радіозв'язком, формули та одиниці вимірювання</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіоелектроніка</h3>
-                    <p>Використання радіозв'язку у військових цілях та особливості.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіоаматорство ч.1</h3>
-                    <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h3>Антени</h3>
-                    <p>Типи антен та їх характеристики для різних діапазонів.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Цифровий радіозв'язок</h3>
-                    <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіозв'язок у війську</h3>
-                    <p>Використання радіозв'язку у військових цілях та особливості.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіоаматорські коди</h3>
-                    <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h3>Антени</h3>
-                    <p>Типи антен та їх характеристики для різних діапазонів.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Цифровий радіозв'язок</h3>
-                    <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіозв'язок у війську</h3>
-                    <p>Використання радіозв'язку у військових цілях та особливості.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-                <td>
-                    <h3>Радіоаматорські коди</h3>
-                    <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-                    <a href="#" class="read-more">Читати</a>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Картки для мобільних пристроїв -->
-    <div class="mobile-cards">
-        <div class="card">
-            <h3>Історія радіозв'язку ч.1</h3>
-            <p>Відкриття радіохвиль, періоди розвитку, еволюція радіотехніки</p>
-            <a href="istoria-radiozviazky.html" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Історія радіозв'язку ч.2</h3>
-            <p>Короткохвильовий, ультракороткохвильовий, супутниковий та інші види радіозв'язку.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Що таке радіолокація</h3>
-            <p>Історія та основи радіолокації. Фізичні основи та устаткування</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіочастотний спектр</h3>
-            <p>Розподіл частот та їх використання в різних сферах.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Антени класифікація</h3>
-            <p>Типи антен та їх характеристики для різних діапазонів.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Фізичні основи, одиниці вимірювання</h3>
-            <p>Базові фізичні поняття пов'язані з радіозв'язком, формули та одиниці вимірювання</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіоелектроніка</h3>
-            <p>Використання радіозв'язку у військових цілях та особливості.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіоаматорство ч.1</h3>
-            <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Антени</h3>
-            <p>Типи антен та їх характеристики для різних діапазонів.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Цифровий радіозв'язок</h3>
-            <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіозв'язок у війську</h3>
-            <p>Використання радіозв'язку у військових цілях та особливості.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіоаматорські коди</h3>
-            <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Антени</h3>
-            <p>Типи антен та їх характеристики для різних діапазонів.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Цифровий радіозв'язок</h3>
-            <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіозв'язок у війську</h3>
-            <p>Використання радіозв'язку у військових цілях та особливості.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-        <div class="card">
-            <h3>Радіоаматорські коди</h3>
-            <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
-            <a href="#" class="read-more">Читати</a>
-        </div>
-    </div>
-</div>
-
+    <table>
+       <div class="footer-circle top left"></div>
+    <div class="footer-circle top right"></div>
+    <div class="footer-circle bottom left"></div>
+    <div class="footer-circle bottom right"></div>
+      <tr>
+        <td>
+          <h3>Історія радіозв'язку ч.1</h3>
+          <p>Відкриття радіохвиль, періоди розвитку, еволюція радіотехніки</p>
+          <a href="istoria-radiozviazky.html" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Історія радіозв'язку ч.2</h3>
+          <p>Короткохвильовий, ультракороткохвильовий, супутниковий та інші види радіозв'язку.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Що таке радіолокація</h3>
+          <p>Історія та основи радіолокації. Фізичні основи та устаткування</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіочастотний спектр</h3>
+          <p>Розподіл частот та їх використання в різних сферах.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Антени класифікація</h3>
+          <p>Типи антен та їх характеристики для різних діапазонів.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Фізичні основи, одиниці вимірювання</h3>
+          <p>Базові фізичні поняття пов’язані з радіозвʼязком, формули та одиниці вимірювання</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіоелектроніка</h3>
+          <p>Використання радіозв'язку у військових цілях та особливості.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіоаматорство ч.1</h3>
+          <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Антени </h3>
+          <p>Типи антен та їх характеристики для різних діапазонів.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Цифровий радіозв'язок</h3>
+          <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіозв'язок у війську</h3>
+          <p>Використання радіозв'язку у військових цілях та особливості.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіоаматорські коди</h3>
+          <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3>Антени </h3>
+          <p>Типи антен та їх характеристики для різних діапазонів.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Цифровий радіозв'язок</h3>
+          <p>Сучасні технології цифрової передачі даних через радіохвилі.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіозв'язок у війську</h3>
+          <p>Використання радіозв'язку у військових цілях та особливості.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+        <td>
+          <h3>Радіоаматорські коди</h3>
+          <p>Q-коди, фонетичний алфавіт та інші скорочення у радіозв'язку.</p>
+          <a href="#" class="read-more">Читати </a>
+        </td>
+      </tr>
+    </table>
+  </div>
 <footer>
     <div class="footer-circle top left"></div>
     <div class="footer-circle top right"></div>
@@ -548,7 +420,6 @@
     <div class="footer-circle bottom right"></div>
     <h3>© 2025 | Всі права захищені | <a href="mailto:mykola.telychko@outlook.com">mykola.telychko@outlook.com</a></h3>
 </footer>
-
 <script>
     document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
         document.getElementById('mainNav').classList.toggle('active');
