@@ -172,29 +172,85 @@
 
         /* Mobile table adaptation */
         @media (max-width: 768px) {
-            table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            tr {
-                display: block;
-            }
-            th, td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 10px;
-                position: relative;
-            }
-            .read-more {
-                position: relative;
-                right: auto;
-                bottom: auto;
-                margin-top: 8px;
-            }
+          /* convert the table layout into stacked cards */
+          table, thead, tbody, tr, th, td {
+            display: block;
+            width: 100%;
+          }
+          
+          table {
+            border: none;
+          }
+          
+          tr {
+            margin-bottom: 1rem;
+            border: 2px solid #7E8272;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+          }
+          
+          th {
+            display: none; /* hide header row on small screens */
+          }
+          
+          td {
+            padding: 15px;
+            position: relative;
+            border: 2px solid #7E8272;
+            border-top: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            width: 100%;
+            min-height: 150px;
+          }
+          
+          td:first-child {
+            border-top: 2px solid #7E8272;
+          }
+          
+          td h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            padding-right: 0;
+          }
+          
+          td p {
+            margin-bottom: 45px;
+            font-size: 13px;
+            line-height: 1.6;
+          }
+          
+          .read-more {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            margin-top: 0;
+            display: inline-block;
+            font-size: 11px;
+          }
         }
-
+        
+        @media (max-width: 480px) {
+          td {
+            padding: 12px;
+            min-height: 140px;
+          }
+          
+          td h3 {
+            font-size: 15px;
+          }
+          
+          td p {
+            font-size: 12px;
+            margin-bottom: 40px;
+          }
+          
+          .read-more {
+            font-size: 10px;
+            padding: 4px 8px;
+          }
+        }
         /* footer---- */
         footer {
             width: 100%;
@@ -305,7 +361,7 @@ td {
   text-align: left;
   background: #DBDED3;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  width: 25%;
+  /* width: 25%; */
   vertical-align: top; /* Гарантує вирівнювання тексту зверху */
 }
 .read-more {
