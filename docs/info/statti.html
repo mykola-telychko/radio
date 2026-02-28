@@ -170,6 +170,31 @@
             }
         }
 
+        /* Mobile table adaptation */
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            tr {
+                display: block;
+            }
+            th, td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+                position: relative;
+            }
+            .read-more {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin-top: 8px;
+            }
+        }
+
         /* footer---- */
         footer {
             width: 100%;
