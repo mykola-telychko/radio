@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Morse Tree</title>
+
+<style>
+:root {
+    --bg-panel: #222527;
+    --metal-dark: #0f1011;
+    --metal-light: #4a4e52;
+    --active-gold: #fff9a6;
+    --wire-color: #3d4144;
+    --text-label: #a0a0a0;
+}
+
+body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.interface {
+    position: relative;
+    width: 700px;
+    height: 880px;
+    background: radial-gradient(circle at 50% 30%, #35393d 0%, #1a1c1e 100%);
+    border-radius: 10px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+}
+
+/* wires */
+svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    stroke: var(--wire-color);
+    stroke-width: 4;
+    fill: none;
+}
+
+.active-wire {
+    stroke: var(--active-gold);
+    filter: drop-shadow(0 0 8px var(--active-gold));
+}
+
+/* nodes */
+.node {
+    position: absolute;
+}
+
+.dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(#111, #333);
+}
+
+.dash {
+    width: 55px;
+    height: 18px;
+    border-radius: 4px;
+    background: linear-gradient(#111, #333);
+}
+
+.active {
+    background: var(--active-gold);
+    box-shadow: 0 0 15px var(--active-gold);
+}
+
+/* labels */
+.label {
+    position: absolute;
+    color: var(--text-label);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.lit {
+    color: var(--active-gold);
+    text-shadow: 0 0 10px var(--active-gold);
+}
+
+/* positions */
+
+/* right branch */
+.n-E { top:120px; left:380px;} .l-E{top:100px; left:360px;}
+.n-I { top:120px; left:440px;} .l-I{top:100px; left:425px;}
+.n-S { top:120px; left:500px;} .l-S{top:100px; left:485px;}
+.n-H { top:120px; left:560px;} .l-H{top:100px; left:545px;}
+
+.n-A { top:420px; left:380px;} .l-A{top:400px; left:350px;}
+.n-W { top:700px; left:380px;} .l-W{top:680px; left:350px;}
+.n-J { top:820px; left:380px;} .l-J{top:800px; left:350px;}
+.n-P { top:700px; left:460px;} .l-P{top:680px; left:445px;}
+
+.n-U { top:260px; left:440px;} .l-U{top:240px; left:425px;}
+.n-F { top:350px; left:440px;} .l-F{top:330px; left:455px;}
+.n-V { top:260px; left:500px;} .l-V{top:240px; left:515px;}
+
+.n-R { top:520px; left:440px;} .l-R{top:500px; left:425px;}
+.n-L { top:520px; left:520px;} .l-L{top:500px; left:535px;}
+
+/* left branch */
+.n-T { top:120px; left:260px;} .l-T{top:100px; left:240px;}
+.n-M { top:120px; left:180px;} .l-M{top:100px; left:160px;}
+.n-O { top:120px; left:100px;} .l-O{top:100px; left:80px;}
+
+.n-N { top:420px; left:260px;} .l-N{top:400px; left:280px;}
+.n-D { top:560px; left:260px;} .l-D{top:540px; left:280px;}
+.n-B { top:820px; left:260px;} .l-B{top:800px; left:230px;}
+.n-X { top:700px; left:180px;} .l-X{top:680px; left:150px;}
+
+.n-K { top:420px; left:180px;} .l-K{top:400px; left:200px;}
+.n-C { top:560px; left:180px;} .l-C{top:540px; left:200px;}
+.n-Y { top:420px; left:100px;} .l-Y{top:400px; left:80px;}
+
+.n-G { top:260px; left:180px;} .l-G{top:240px; left:200px;}
+.n-Q { top:260px; left:100px;} .l-Q{top:240px; left:80px;}
+.n-Z { top:350px; left:180px;} .l-Z{top:330px; left:200px;}
+
+</style>
+</head>
+
+<body>
+
+<div class="interface">
+
+<svg>
+    <!-- main -->
+    <path d="M350 60 L380 120"/>
+    <path d="M380 120 L380 420" class="active-wire"/>
+    <path d="M380 420 L380 820"/>
+    
+    <!-- right -->
+    <path d="M380 120 L560 120"/>
+    <path d="M380 420 L520 520"/>
+    <path d="M380 700 L460 700"/>
+
+    <!-- left -->
+    <path d="M350 60 L260 120"/>
+    <path d="M260 120 L260 820"/>
+    <path d="M260 120 L100 120"/>
+</svg>
+
+<!-- active path -->
+<div class="label l-E lit">E</div><div class="node dot n-E active"></div>
+<div class="label l-A lit">A</div><div class="node dash n-A active"></div>
+
+<!-- rest -->
+<div class="label l-I">I</div><div class="node dot n-I"></div>
+<div class="label l-S">S</div><div class="node dot n-S"></div>
+<div class="label l-H">H</div><div class="node dot n-H"></div>
+
+<div class="label l-W">W</div><div class="node dash n-W"></div>
+<div class="label l-J">J</div><div class="node dash n-J"></div>
+<div class="label l-P">P</div><div class="node dot n-P"></div>
+
+<div class="label l-U">U</div><div class="node dot n-U"></div>
+<div class="label l-F">F</div><div class="node dot n-F"></div>
+<div class="label l-V">V</div><div class="node dash n-V"></div>
+
+<div class="label l-R">R</div><div class="node dot n-R"></div>
+<div class="label l-L">L</div><div class="node dot n-L"></div>
+
+<div class="label l-T">T</div><div class="node dash n-T"></div>
+<div class="label l-M">M</div><div class="node dash n-M"></div>
+<div class="label l-O">O</div><div class="node dash n-O"></div>
+
+<div class="label l-N">N</div><div class="node dot n-N"></div>
+<div class="label l-D">D</div><div class="node dot n-D"></div>
+<div class="label l-B">B</div><div class="node dot n-B"></div>
+<div class="label l-X">X</div><div class="node dash n-X"></div>
+
+<div class="label l-K">K</div><div class="node dash n-K"></div>
+<div class="label l-C">C</div><div class="node dot n-C"></div>
+<div class="label l-Y">Y</div><div class="node dash n-Y"></div>
+
+<div class="label l-G">G</div><div class="node dot n-G"></div>
+<div class="label l-Q">Q</div><div class="node dash n-Q"></div>
+<div class="label l-Z">Z</div><div class="node dot n-Z"></div>
+
+</div>
+
+</body>
+</html>

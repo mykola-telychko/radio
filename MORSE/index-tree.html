@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morse Tree</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #fff;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+  min-height: 100vh;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.signal-box {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  min-height: 32px;
+  color: #111;
+  text-align: center;
+}
+
+.cur-letter {
+  font-size: 48px;
+  font-weight: 500;
+  color: #111;
+  min-height: 56px;
+  text-align: center;
+  line-height: 1;
+}
+
+.prog-wrap {
+  width: 200px;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.prog-bar {
+  height: 100%;
+  width: 0%;
+  background: #888;
+  border-radius: 2px;
+  transition: width .04s linear;
+}
+.prog-bar.over { background: #111; }
+
+.key-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #222;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: .08em;
+  transition: background .07s, transform .07s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.key-btn.pressing {
+  background: #f0f0f0;
+  transform: scale(.93);
+}
+.key-sub { font-size: 11px; color: #aaa; font-weight: 400; }
+
+.hint {
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+}
+
+.ctrl-row { display: flex; gap: 8px; }
+.ctrl {
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+}
+.ctrl:hover { background: #f5f5f5; }
+
+.decoded-box {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  color: #111;
+  min-height: 36px;
+  text-align: center;
+  word-break: break-all;
+  max-width: 640px;
+}
+
+svg { display: block; width: 100%; max-width: 720px; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <div class="signal-box" id="sig-box">—</div>
+  <div class="cur-letter" id="cur-letter">&nbsp;</div>
+  <div class="prog-wrap"><div class="prog-bar" id="prog"></div></div>
+  <button class="key-btn" id="key">
+    <span>MORSE</span>
+    <span class="key-sub">KEY</span>
+  </button>
+  <div class="hint" id="hint">&lt;200 мс = · &nbsp; ≥200 мс = —</div>
+  <div class="ctrl-row">
+    <button class="ctrl" id="btn-space">Пробіл (зафіксувати)</button>
+    <button class="ctrl" id="btn-clear">Очистити</button>
+  </div>
+  <div class="decoded-box" id="decoded">&nbsp;</div>
+</div>
+
+<svg id="tree-svg" viewBox="0 0 720 760"></svg>
+
+<script>
+const MORSE_MAP = {
+  '.-':'A','-...':'B','-.-.':'C','-..':'D','.':'E','..-.':'F','--.':'G',
+  '....':'H','..':'I','.---':'J','-.-':'K','.-..':'L','--':'M','-.':'N',
+  '---':'O','.--.':'P','--.-':'Q','.-.':'R','...':'S','-':'T','..-':'U',
+  '...-':'V','.--':'W','-..-':'X','-.--':'Y','--..':'Z',
+  '.----':'1','..---':'2','...--':'3','....-':'4','.....':'5',
+  '-.....':'6','--...':'7','---..':'8','----.':'9','-----':'0'
+};
+
+const MAX_D = 4;
+const W = 720;
+const ROW_H = 110;
+const MARGIN_TOP = 30;
+const ACTIVE_COLOR   = '#6C5CE7';
+const ACTIVE_FILL    = '#6C5CE7';
+const PATH_COLOR     = '#A29BFE';
+const DEFAULT_STROKE = '#ccc';
+const DEFAULT_FILL   = '#fff';
+
+function buildNodes() {
+  const nodes = [];
+  const byCode = {};
+
+  function add(code) {
+    if (byCode[code] !== undefined) return;
+    const depth = code.length;
+    if (depth > MAX_D) return;
+    const letter = MORSE_MAP[code] || null;
+    const n = { code, depth, letter };
+    byCode[code] = nodes.length;
+    nodes.push(n);
+  }
+
+  add('');
+  for (let d = 1; d <= MAX_D; d++) {
+    nodes.filter(n => n.depth === d - 1).forEach(n => {
+      add(n.code + '.');
+      add(n.code + '-');
+    });
+  }
+
+  nodes.forEach(n => {
+    const sameDepth = nodes.filter(x => x.depth === n.depth);
+    const idx = sameDepth.indexOf(n);
+    const total = sameDepth.length;
+    const spread = W - 48;
+    n.x = 24 + (idx + 0.5) * (spread / total);
+    n.y = MARGIN_TOP + n.depth * ROW_H + 28;
+  });
+
+  return { nodes, byCode };
+}
+
+const { nodes, byCode } = buildNodes();
+const SVG_H = MARGIN_TOP + MAX_D * ROW_H + 90;
+
+const svg = document.getElementById('tree-svg');
+svg.setAttribute('viewBox', `0 0 ${W} ${SVG_H}`);
+
+const NS = 'http://www.w3.org/2000/svg';
+function mkNS(tag) { return document.createElementNS(NS, tag); }
+
+const nodeEls = {};
+
+function drawTree() {
+  const linesG = mkNS('g');
+  const edgeLabelsG = mkNS('g');
+  const nodesG = mkNS('g');
+  svg.appendChild(linesG);
+  svg.appendChild(edgeLabelsG);
+  svg.appendChild(nodesG);
+
+  nodes.forEach(n => {
+    if (!n.code) return;
+    const parent = nodes[byCode[n.code.slice(0, -1)]];
+    if (!parent) return;
+
+    const line = mkNS('line');
+    line.setAttribute('x1', parent.x); line.setAttribute('y1', parent.y);
+    line.setAttribute('x2', n.x);      line.setAttribute('y2', n.y);
+    line.setAttribute('stroke', DEFAULT_STROKE);
+    line.setAttribute('stroke-width', '1');
+    line.setAttribute('id', 'line-' + n.code);
+    linesG.appendChild(line);
+
+    const sym = n.code.slice(-1) === '.' ? '·' : '—';
+    const lbl = mkNS('text');
+    lbl.setAttribute('x', (parent.x + n.x) / 2 + (n.code.slice(-1) === '.' ? -10 : 10));
+    lbl.setAttribute('y', (parent.y + n.y) / 2);
+    lbl.setAttribute('text-anchor', 'middle');
+    lbl.setAttribute('dominant-baseline', 'central');
+    lbl.setAttribute('font-size', '11');
+    lbl.setAttribute('font-weight', '600');
+    lbl.setAttribute('fill', '#bbb');
+    lbl.setAttribute('id', 'elbl-' + n.code);
+    lbl.textContent = sym;
+    edgeLabelsG.appendChild(lbl);
+  });
+
+  nodes.forEach(n => {
+    const R = n.depth === 0 ? 20 : n.letter ? 17 : 13;
+
+    const circ = mkNS('circle');
+    circ.setAttribute('cx', n.x); circ.setAttribute('cy', n.y); circ.setAttribute('r', R);
+    circ.setAttribute('fill', DEFAULT_FILL);
+    circ.setAttribute('stroke', n.letter ? '#999' : DEFAULT_STROKE);
+    circ.setAttribute('stroke-width', n.letter ? '1.5' : '0.5');
+    circ.setAttribute('id', 'circ-' + n.code);
+
+    const lbl = mkNS('text');
+    lbl.setAttribute('x', n.x); lbl.setAttribute('y', n.y);
+    lbl.setAttribute('text-anchor', 'middle');
+    lbl.setAttribute('dominant-baseline', 'central');
+    lbl.setAttribute('font-size', n.depth === 0 ? '14' : n.letter ? '13' : '10');
+    lbl.setAttribute('font-weight', '500');
+    lbl.setAttribute('fill', n.letter ? '#222' : '#ccc');
+    lbl.setAttribute('id', 'nlbl-' + n.code);
+    lbl.textContent = n.letter || (n.depth === 0 ? '▽' : '');
+
+    const g = mkNS('g');
+    g.appendChild(circ);
+    g.appendChild(lbl);
+    nodesG.appendChild(g);
+    nodeEls[n.code] = { circ, lbl };
+  });
+}
+
+drawTree();
+
+function highlight(path) {
+  nodes.forEach(n => {
+    const el = nodeEls[n.code];
+    if (!el) return;
+    el.circ.setAttribute('fill', DEFAULT_FILL);
+    el.circ.setAttribute('stroke', n.letter ? '#999' : DEFAULT_STROKE);
+    el.circ.setAttribute('stroke-width', n.letter ? '1.5' : '0.5');
+    el.lbl.setAttribute('fill', n.letter ? '#222' : '#ccc');
+  });
+
+  document.querySelectorAll('[id^="line-"]').forEach(l => {
+    l.setAttribute('stroke', DEFAULT_STROKE);
+    l.setAttribute('stroke-width', '1');
+  });
+  document.querySelectorAll('[id^="elbl-"]').forEach(l => {
+    l.setAttribute('fill', '#bbb');
+  });
+
+  let p = '';
+  for (let i = 0; i < path.length; i++) {
+    p += path[i];
+    const lineEl = document.getElementById('line-' + p);
+    if (lineEl) {
+      lineEl.setAttribute('stroke', PATH_COLOR);
+      lineEl.setAttribute('stroke-width', '2.5');
+    }
+    const elblEl = document.getElementById('elbl-' + p);
+    if (elblEl) elblEl.setAttribute('fill', ACTIVE_COLOR);
+
+    const ne = nodeEls[p];
+    if (ne) {
+      const isLast = (i === path.length - 1);
+      ne.circ.setAttribute('fill', isLast ? ACTIVE_FILL : '#EDE9FE');
+      ne.circ.setAttribute('stroke', ACTIVE_COLOR);
+      ne.circ.setAttribute('stroke-width', '2');
+      ne.lbl.setAttribute('fill', isLast ? '#fff' : ACTIVE_COLOR);
+    }
+  }
+}
+
+let currentPath = '';
+let decodedText = '';
+let pressing = false;
+let pressStart = 0;
+let barAnim = null;
+
+function updateUI() {
+  const sig = document.getElementById('sig-box');
+  sig.textContent = currentPath
+    ? currentPath.split('').map(c => c === '.' ? '·' : '—').join(' ')
+    : '—';
+
+  const letter = MORSE_MAP[currentPath] || '';
+  document.getElementById('cur-letter').textContent = letter || (currentPath ? '?' : '\u00a0');
+
+  const hint = document.getElementById('hint');
+  if (currentPath && letter) hint.textContent = `«${currentPath}» = ${letter} · натисніть Пробіл`;
+  else if (currentPath) hint.textContent = `${currentPath} — продовжуйте або Пробіл`;
+  else hint.textContent = '<200 мс = ·   ≥200 мс = —';
+}
+
+function startPress(e) {
+  e.preventDefault();
+  if (pressing) return;
+  pressing = true;
+  pressStart = Date.now();
+  document.getElementById('key').classList.add('pressing');
+  const prog = document.getElementById('prog');
+  prog.style.width = '0%';
+  prog.classList.remove('over');
+  clearInterval(barAnim);
+  barAnim = setInterval(() => {
+    const elapsed = Date.now() - pressStart;
+    prog.style.width = Math.min(elapsed / 200 * 100, 100) + '%';
+    if (elapsed >= 200) prog.classList.add('over');
+  }, 16);
+}
+
+function endPress(e) {
+  e.preventDefault();
+  if (!pressing) return;
+  pressing = false;
+  clearInterval(barAnim);
+  document.getElementById('prog').style.width = '0%';
+  document.getElementById('prog').classList.remove('over');
+  document.getElementById('key').classList.remove('pressing');
+
+  const dur = Date.now() - pressStart;
+  const sym = dur < 200 ? '.' : '-';
+
+  if (currentPath.length < MAX_D) {
+    currentPath += sym;
+    highlight(currentPath);
+    updateUI();
+  }
+}
+
+const key = document.getElementById('key');
+key.addEventListener('mousedown', startPress);
+key.addEventListener('mouseup', endPress);
+key.addEventListener('mouseleave', e => { if (pressing) endPress(e); });
+key.addEventListener('touchstart', startPress, { passive: false });
+key.addEventListener('touchend', endPress, { passive: false });
+
+document.getElementById('btn-space').addEventListener('click', () => {
+  if (currentPath) {
+    const letter = MORSE_MAP[currentPath];
+    if (letter) decodedText += letter;
+  } else if (decodedText && decodedText.slice(-1) !== ' ') {
+    decodedText += ' ';
+  }
+  document.getElementById('decoded').textContent = decodedText || '\u00a0';
+  currentPath = '';
+  highlight('');
+  updateUI();
+});
+
+document.getElementById('btn-clear').addEventListener('click', () => {
+  currentPath = '';
+  decodedText = '';
+  highlight('');
+  updateUI();
+  document.getElementById('decoded').textContent = '\u00a0';
+});
+
+highlight('');
+updateUI();
+</script>
+</body>
+</html>

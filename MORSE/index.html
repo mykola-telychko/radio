@@ -210,7 +210,7 @@
 }
 .readonly-textarea { 
   background-color: #fffde7;
-  width: 400px;
+  width: 267px;
   height: 100px;
   font-size: -webkit-xxx-large;
  }
@@ -243,10 +243,12 @@
 		background: #731a54;
 		border-radius: 10px;
 		width: 90%;
+    height: 90%;
 		"
 	>
 		
-	<div class="corpus" style="border: 1px solid cyan; height: 500px;">
+	<!-- <div class="corpus" style="border: 1px solid cyan; height: 500px;"> -->
+	<div class="corpus" style="border: 1px solid cyan;">
 			
       <div class="flex-block half" style="border: 1px solid #e7d5e1" >
 
@@ -285,14 +287,15 @@
 			<!-- <div class="btn-vintage" id="morseButton"> -->
 			<div class="half" >
           <div class="btn-vintage" id="morseBtn">
-            <span>click</span>
+            <span style="font-size: 3vh" >morse key</span>
           </div>
 			</div>
-      <div class="half" >
-          <div class="btn-vintage" id="mon">
+
+      <!-- <div class="half" > -->
+          <!-- <div class="btn-vintage" id="mon">
             <span>click</span>
-          </div>
-			</div>
+          </div> -->
+			<!-- </div> -->
 
 		</div>
 
@@ -300,7 +303,6 @@
 
     <script>
 
-    const morseButton = document.getElementById('morseButton');
 		const btn = document.getElementById('morseBtn');
 		const result = document.getElementById('result');
 		const morseOutput = document.getElementById('morseOutput');
@@ -395,25 +397,6 @@
         // Зупинити сигнал при втраті фокусу
         btn.addEventListener('blur', stopSignal);
     // audio -- end
-
-    // Додаткова функціональність - очищення коду . ???
-    // document.addEventListener('keydown', (e) => {
-    //   if (e.key === 'Escape') {
-    //     morseCode = '';
-    //     morseOutput.textContent = '';
-    //     result.textContent = 'Тривалість натискання: 0 мс';
-    //   }
-    // });
-	
-        // Додаємо обробник події для натискання
-        morseButton.addEventListener('mousedown', function() {
-			// const btn = document.getElementById('holdBtn');
-			const result = document.getElementById('result');
-
-			let pressStartTime = 0;
-			pressStartTime = Date.now();
-            this.classList.add('active');
-        });
     </script>
 </body>
 </html>
